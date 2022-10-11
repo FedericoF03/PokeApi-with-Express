@@ -10,86 +10,88 @@
 <body>
     <header>
         <nav class="nav">
-            <img src="" alt="logo">
-            <div>
-                <input type="search" name="" id="" placeholder="Search Pokemon | Id">
-                <input type="button" value="">
+            <a class="logotype_link" href="/">
+                <img class="logotype" src="Public/Assets/img/logo.gif" alt="logo">
+            </a>
+            <div class="box__search">
+                <input class="input_text-search" type="search" name="" id="" placeholder="Search Pokemon / Id">
+                <input class="input_search" type="button" >
             </div>
-            <div>
-                <p>Api | Db</p>
+            <div class="box_mode">
+                <select form="test" class="mode_active" id="selectMode"name="mode">
+                    
+                </select>
             </div>     
         </nav>
     </header>
+    <form action="/pokedex" id="testform" method="get">
+        <input type="hidden" id="type">
+    </form>
     <div class="conteiner">
         <div class="filters">
-            <div>
-                <div>
-                    <button>5</button>
-                    <button>10</button>
-                    <button>50</button>
-                    <button>100</button>
+            <div class="box__limits">
+                <div class="box__input-limit">
+                    <button id="click" form="test" class="input__limit" name="limit" value="5">5</button>
+                    <button id="click" form="test" class="input__limit" name="limit" value="10">10</button>
+                    <button id="click" form="test" class="input__limit" name="limit" value="50">50</button>
+                    <button id="click" form="test" class="input__limit" name="limit" value="100">100</button>
                 </div>
             </div>
-            <div>
-                <select name="Asc" id="">Asc</select>
-                <select name="Types" id="">Types</select>
+            <div class="box_filters">
+                <form action="" id="test" method="get"></form>
+                <select form="test" class="filters_asc" id="selectType"name="Types">
+
+                </select>
+                <select form="test" class="filters_type" id="change" name="Order">
+                    <optgroup label="Id">
+                        <option value="Asc">Asc</option>
+                        <option value="Desc">Desc</option>
+                    </optgroup>
+                    <optgroup label="alphabetical">
+                        <option value="A-Z">A-Z</option>
+                        <option value="Z-A">Z-A</option>
+                    </optgroup>
+                </select>
             </div>         
         </div>
         <main class="main">
-            <div class="card-pokemon">
-                <p>Pokename | N°$</p>
-                <img src="" alt="pokemon">
-                <input type="submit" value="">
+            <div class="conteiner__pokes" id="backPoke">
+                <template  id="template">
+                    <div class="box__pokemon">
+                        <p class="name__pokemon" id="namePoke"></p>
+                        <img class="img__pokemon" id="imgPoke" src="" alt="">
+                        <div class="input__box">
+                            <a class="input_link" id="linkPoke" href="">Catch!</a>
+                            <img class="img__input-pokeball" src="Public/Assets/img/Pokeball.png" alt="Pokeball link">
+                        </div>
+                    </div>
+                </template>
             </div>
-            <div class="card-pokemon">
-                <p>Pokename | N°$</p>
-                <img src="" alt="pokemon">
-                <input type="submit" value="">
-            </div>
-            <div class="card-pokemon">
-                <p>Pokename | N°$</p>
-                <img src="" alt="pokemon">
-                <input type="submit" value="">
-            </div>
-            <div class="card-pokemon">
-                <p>Pokename | N°$</p>
-                <img src="" alt="pokemon">
-                <input type="submit" value="">
-            </div>
-            <div class="card-pokemon">
-                <p>Pokename | N°$</p>
-                <img src="" alt="pokemon">
-                <input type="submit" value="">
-            </div>
-            <div class="card-pokemon">
-                <p>Pokename | N°$</p>
-                <img src="" alt="pokemon">
-                <input type="submit" value="">
-            </div>
-            <template  id="template">
-                <div>
-                    <p>Pokename | N°$</p>
-                    <img src="" alt="pokemon">
-                    <input type="submit" value="">
-                </div>
-            </template>
             <div class="pagination">
-                <input type="button" value="">
-                <div>
-                    <input type="button" value="">
+                <input class="add-db" type="button" value="+">
+                <div class="box_pagination">
+                    <input class="pagination_button" type="button" value="1">
+                    <input class="pagination_button" type="button" value="2">
+                    <input class="pagination_button" type="button" value="3">
+                    <input class="pagination_button" type="button" value="4">
+                    <input class="pagination_button" type="button" value="5">
                 </div>
-                <img src="" alt="arrow">
+                <img class="arrow-top" src="Public/Assets/img/arrow.png" alt="arrow">
             </div>
         </main>
     </div>
     <footer class="footer">
-        <div>
-            <img src="" alt="Git">
-            <p>Git link</p>
+        <div class="footer_box-logos">
+            <a href="">
+                <img class="footer_logos" src="Public/Assets/img/GitHub-Logo.png" alt="Git">
+                <p>Git link</p>
+            </a>
         </div>
-        <div>
-            <img src="" alt="LinkedIn">
-            <p>LinkedIn link</p>
+        <div class="footer_box-logos">
+            <a href="">
+                <img class="footer_logos" src="Public/Assets/img/Linkedin-In-Logo.png" alt="LinkedIn">
+                <p>LinkedIn link</p>
+            </a>
         </div>
     </footer>
     <script src="Public/Js/getPokes.js"></script>

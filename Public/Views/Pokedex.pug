@@ -1,0 +1,48 @@
+extends header.pug
+
+block content 
+    div(class="conteiner")
+        div(class="filters")
+            div(class="box__limits")
+                div(class="box__input-limit")
+                    button(id="click" class="input__limit") 5
+                    button(id="click" class="input__limit") 20
+                    button(id="click" class="input__limit") 50
+                    button(id="click" class="input__limit") 100
+            div(class="box_filters")
+                select(form="test" class="filters_asc" id="selectType" name="Types")
+                    option(value="") All
+                    each value in locals.allTypes
+                        if value.name !== 'unknown'
+                            option=value.name
+                select(class="filters_type" id="selectOrder")
+                    optgroup(label="Id")
+                        option( value="asc") Asc
+                        option( value="desc") Desc
+                    optgroup(label="alphabetical")
+                        option( value="a-z") A-Z
+                        option( value="z-a") Z-A
+        main.main
+            div.conteiner__pokes#backPoke
+                each value in locals.allPokes
+                    div(class="box__pokemon")
+                        p(class="name__pokemon" id="namePoke")= value.names
+                        img(class="img__pokemon" id="imgPoke" src=`${value.sprites[0]}` alt=`${value.names}`)
+                        div(class="input__box")
+                            a(class="input_link" id="linkPoke" href=`/pokemon/${value.names}`) Catch!
+                            img(class="img__input-pokeball" src="Public/Assets/img/Pokeball.png" alt="Pokeball link")
+            div(class="pagination")
+                input(class="add-db" type="button" value="+")
+                div(class="box_pagination" id="paginations")
+                    -let number = -1
+                    while parseInt(number++) < Math.floor( locals.count / locals.limit )
+                        button( id="pag" class="pagination_button" type="submit" value=`${(locals.limit * number)}`)= number
+                img(class="arrow-top" src="Public/Assets/img/arrow.png" alt="arrow")
+            form(action="" id="createForm" method="get")
+                input(type="hidden" id="hiddenOffset" name="offset" value=`${locals.offset}`)
+                input(type="hidden" id="hiddenLimit" name="limit" value=`${locals.limit}`)
+                input(type="hidden" id="hiddenOrder" name="order" value=`${locals.offset}`)
+    script(src="Public/Js/front.js") 
+    include footer.pug
+
+//- locals.count

@@ -1,5 +1,7 @@
 * {
     margin: 0;
+    font-family: roboto, sans-serif;
+    text-decoration: none;
 }
 
 
@@ -54,6 +56,51 @@
     flex-wrap: wrap;
 }
 
+.logotype_link {
+    height: 100%;
+}
+
+.logotype {
+    height: 100%;
+}
+
+.box_mode {
+    display: flex;
+}
+
+.box__search {
+    display: flex;
+    width: min-content;
+    justify-content: center;
+}
+
+.input_text-search {
+    max-width: 80%;
+    border: none; 
+}
+
+.input_search {
+    border: none;
+    width: 20px;
+    background: url('../Assets/img/lupa.png') no-repeat #FF5353;
+    background-size: contain;
+    border-radius: 0 8px 8px 0;
+}
+
+.mode_active {
+    background-color: #FF3030;
+    color: #ffff;
+    border: none;
+    padding: 0.4rem;
+}
+
+.mode_desactive {
+    background-color: #FFFFFF;
+    color: #000000;
+    border-radius: 0 8px 8px 0;
+    padding: 0.4rem;
+}
+
 .conteiner {
     height: 80vh;
     overflow-y: auto;
@@ -66,12 +113,52 @@
     justify-content: space-between;
 }
 
-.footer {
-    height: 10vh;
-    justify-content: space-around;
+.box__limits {
+    background-color: #384178;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 15px 0;
+    width: 50%;
+    max-width: min-content;
+}
+
+.box__input-limit {
+    background-color: #232A54;
+    border-radius: 15px;
+    padding: 0.5rem;
     display: flex;
-    background-color: #CC0B0B;
-    align-items: center;
+    gap: 5px;
+}
+
+.input__limit {
+    border: none;
+    background: url('../Assets/img/limit.png') no-repeat center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50px;
+    font-weight: 800;
+    text-align: center; 
+}
+
+.box_filters {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 350px;
+}
+
+.filters_asc {
+    width: 50%;
+    max-width: 200px;
+    border-radius: 50px;
+}
+
+.filters_type {
+    width: 50%;
+    max-width: 200px;
+    border-radius: 15px;
+    margin-left: 50%;
 }
 
 .main {
@@ -87,8 +174,112 @@
     margin: 15px 0;
 }
 
+.conteiner__pokes {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 15px 0
+}
+
+.box__pokemon {
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.name__pokemon {
+    color: #FFFFFF;
+    background-color: #050505da ;
+    padding: 0.2rem 0.4rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+}
+
+.img__pokemon {
+    max-width: 200px;
+}
+
+
+.input__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_link {
+    position: relative;
+    top: 15px;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.img__input-pokeball {
+    width: 80px;
+}
+
 .pagination {
     display: flex;
     width: 100%;
-   justify-content: space-around;
+    justify-content: space-around;
+}
+
+.arrow-top {
+    max-width: 50px;
+    position: fixed;
+    bottom: 15vh;
+    right: 0
+}
+
+.box_pagination {
+    background-color: #21293E;
+    padding: 0.5rem 0.8rem;
+    border-radius: 15px;
+    display: flex;
+    max-width: 150px;
+    overflow-x: auto;
+    max-height: min-content;
+    gap: 5px;
+    height: min-content;
+    justify-content: flex-start;
+}
+
+.pagination_button {
+    background: url('../Assets/img/pag.png') no-repeat center;
+    background-size: contain;
+    margin: 0;
+    height: 40px;
+    border-radius: 50px;
+    padding: 0;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border: 0.1rem solid #8b8b8b;
+    min-width: 40px;
+}
+
+.add-db {
+    max-width: 50px;
+    position: fixed;
+    bottom: 15vh;
+    left: 0
+}
+
+.footer {
+    height: 10vh;
+    justify-content: space-around;
+    display: flex;
+    background-color: #CC0B0B;
+    align-items: center;
+}
+
+.footer_box-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer_logos {
+    max-width: 25px;
 }

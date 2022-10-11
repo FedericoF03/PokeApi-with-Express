@@ -1,19 +1,22 @@
-import {fileURLToPath} from 'url';
-import path from 'path'
 import express from 'express'
-import getAllPoke  from '../Controllers/datapoke.js';
+import sendAllPoke, { sendType } from '../Controllers/datapoke.js';
 
 const Router = express.Router()
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
     
 Router
-     .get('/pokedex', (req, res) => {
-        res.set('Content-Type', 'text/html')
-        res.sendFile('Pokedex.html', { root: path.join(__dirname, '../Public/Views')})
+     .get('/pokedex', async (req, res) => {
+      let types = await sendType(),
+         pokes = await sendAllPoke(req.query.offset, req.query.limit),
+         locals = { 
+            allPokes: pokes.data,
+            allTypes: types.results,
+            limit: pokes.limit,
+            offset: pokes.offset,
+            count: pokes.count,
+            order: req.query.order,
+            mode: req.query.mode
+         }
+        res.render('Pokedex', locals)
      })
-     .get('/getPokes', async (req, res) => {
-        let data = await getAllPoke()
-        res.json(data)
-     })
+
 export default Router 

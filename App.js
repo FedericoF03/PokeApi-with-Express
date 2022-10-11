@@ -8,7 +8,8 @@ const __dirname = path.dirname(__filename);
 const app = express()
 
 app
-    .set('views engine', 'html')
+    .set('view engine', 'pug')
+    .set('views', path.join(__dirname, '/Public/views'))
     .use(homeRoute)
     .use(pokedexRoute)
     .use(express.static(path.join(__dirname, '/')))
