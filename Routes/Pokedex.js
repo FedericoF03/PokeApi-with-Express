@@ -1,7 +1,7 @@
-import express from 'express'
+import express from 'express';
 import sendAllPoke, { sendType } from '../Controllers/datapoke.js';
 
-const Router = express.Router()
+const Router = express.Router();
     
 Router
      .get('/pokedex', async (req, res) => {
@@ -13,10 +13,11 @@ Router
             limit: pokes.limit,
             offset: pokes.offset,
             count: pokes.count,
-            order: req.query.order,
-            mode: req.query.mode
+            order: req.query.order == undefined ? 'asc' : req.query.order,
+            mode: req.query.mode,
+            title: 'Pokedex'
          }
         res.render('Pokedex', locals)
-     })
+     });
 
 export default Router 

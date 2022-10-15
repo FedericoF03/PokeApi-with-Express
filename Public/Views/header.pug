@@ -2,20 +2,20 @@ doctype html
 html(lang="en")
 head
     meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet", href="Public/Styles/style.css")
-    title Pokedex
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/Public/Styles/style.css")
+    title= title
 body 
     header
-        nav(class="nav")
-            a(class="logotype_link", href="/")
-                img(class="logotype", src="Public/Assets/img/logo.gif", alt="logo")
-            div(class="box__search")
-                input(class="input_text-search" type="search" id="searchPokemon" placeholder="Search Pokemon / Id")
-                input(class="input_search", type="button")
-            div(class="box_mode")
-                select( id="selectMode" class="mode_active")
+        nav.nav.flex
+            a(href="/").nav__logo
+                img(src="/Public/Assets/img/logo.gif" alt="logotype").nav__logo
+            div.nav__conteiner-search.flex
+                input(type="search" placeholder="Search Pokemon / Id").search__input-search#searchPokemon
+                input(type="button").search__input-button#inputSearch
+            div.flex
+                select.conteiner-mode#selectMode
                     option( value="") All
                     option( value="api") Api
                     option( value="db") Db
