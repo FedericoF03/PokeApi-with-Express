@@ -1,0 +1,104 @@
+extends header.pug
+
+block content 
+    div.conteiner#conteiner
+        div.background-white.flex 
+            div.background-color.flex
+                div.conteiner-pokemon.flex
+                    p.box-poke__name-poke.box-poke__name-poke--margin#namePoke= `${locals.resPokemon.name} / N°${locals.resPokemon.id}`
+                    div.conteiner-pokemon__box-pokemon.flex
+                        div.modal#modal
+                            p.modal-text#info= locals.specieData.description
+                        button.fav-button.flex#info
+                            img(src="/Public/Assets/!.png", alt="").fav-button__fav-logo#info
+                        div 
+                            if locals.resPokemon.sprites.other.home.front_default
+                                img(src=`${locals.resPokemon.sprites.other.home.front_default}`).box-poke__img-poke#imgPoke 
+                        div.shiny-fav-buttons.flex 
+                            button.fav-button--radius#shiny
+                                img(src="/Public/Assets/shiny.png", alt="").fav-button__fav-logo#shiny
+                            button.fav-button--radius#fav
+                                img(src="/Public/Assets/Heart.png", alt="").fav-button__fav-logo#fav 
+                p.pokemon-data  data
+                div.background-data 
+                    p Height 
+                    p= locals.resPokemon.height
+                    p weight
+                    p= locals.resPokemon.weight
+                p.pokemon-data Types 
+                div.background-data
+                    each types in locals.resPokemon.types
+                        img(src=`/Public/Assets/${types.type.name}.png` alt="").types
+                p.pokemon-data  Abilities 
+                div.background-data
+                    each ability in locals.resPokemon.abilities 
+                        if ability.is_hidden 
+                            div.flex
+                                p Ability ocult
+                                p= ability.ability.name
+                        else 
+                            div.flex
+                                p Ability
+                                p= ability.ability.name
+                
+                if locals.resPokemon.moves == null
+                    p.pokemon-data Moves
+                    div.moves-data.flex 
+                        each move in locals.resPokemon.moves
+                            p= move.move.name
+                p.pokemon-data Method encounter / Varierities
+                div.background-data 
+                    div.flex
+                            p Habitat
+                            if  locals.specieData.habitat !== null
+                                p= locals.specieData.habitat
+                    div.flex
+                            p Rate  
+                            p= locals.specieData.rate
+                    div.flex
+                            p Varierities 
+                            div.conteiner-varierities.flex
+                                each varierities in locals.specieData.varierities
+                                    if !varierities.is_default
+                                        a(href=`${varierities.pokemon.name}`)= varierities.pokemon.name
+            p.title Stat
+            div.box-stat.flex
+                each stat in locals.resPokemon.stats
+                    if stat.stat.name === 'hp'
+                        div.bar-background.bar-background--green
+                            div.bar-front.bar-front--green
+                                p.stat-text= `${stat.stat.name} ${stat.base_stat}`
+                    else if stat.stat.name === 'attack'
+                        div.bar-background.bar-background--red
+                            div.bar-front.bar-front--red
+                                p.stat-text= `${stat.stat.name} ${stat.base_stat}`
+                    else if stat.stat.name === 'defense'
+                        div.bar-background.bar-background--blue
+                            div.bar-front.bar-front--blue
+                                p.stat-text= `${stat.stat.name} ${stat.base_stat}`
+                    else if stat.stat.name === 'special-attack'
+                        div.bar-background.bar-background--orange
+                            div.bar-front.bar-front--orange
+                                p.stat-text= `${stat.stat.name} ${stat.base_stat}`
+                    else if stat.stat.name === 'special-defense'
+                        div.bar-background.bar-background--light-blue
+                            div.bar-front.bar-front--light-blue
+                                p.stat-text= `${stat.stat.name} ${stat.base_stat}`
+                    else if stat.stat.name === 'speed'
+                        div.bar-background.bar-background--pink
+                            div.bar-front.bar-front--pink
+                                p.stat-text= `${stat.stat.name} ${stat.base_stat}`
+            if locals.evoChainData !== null                 
+                p.title Evolution Chain
+                div.box-evolution.flex
+                    -let count = 1
+                    each evoChainData in locals.evoChainData
+                        div.box-evolution__pokemon
+                            p.box-poke__name-poke#namePoke= `${evoChainData.species_name} / N°${evoChainData.img}`
+                            img(src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${evoChainData.img}.png`).box-poke__img-poke#imgPoke 
+                        a(href=`/pokemon/${evoChainData.species_name}`).box-evolution__evolution-link Evolved!
+                        if locals.evoChainData.length > count++
+                            img(src="/Public/Assets/arrow-evo.png", alt="arrow").arrow-evolution
+            img( src="/Public/Assets/arrow.png" alt="arrow").arrow#arrow
+    script(type="module" src="/Public/Js/Listeners.js") 
+    include footer.pug

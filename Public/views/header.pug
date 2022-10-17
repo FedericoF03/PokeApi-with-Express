@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/Public/Styles/style.css")
+    title= title
+body 
+    header
+        nav.nav.flex
+            a(href="/").nav__logo
+                img(src="/Public/Assets/logo.gif" alt="logotype").nav__logo
+            div.nav__conteiner-search.flex
+                input(type="search" placeholder="Search Pokemon / Id").search__input-search#searchPokemon
+                input(type="button").search__input-button#inputSearch
+            div.flex
+                select.conteiner-mode#selectMode
+                    option( value="") All
+                    option( value="api") Api
+                    option( value="db") Db
+    block content 
