@@ -4,8 +4,7 @@
   "description": "Poke api make with node.js and express",
   "main": "App.js",
   "scripts": {
-    "test": "nodemon App.js",
-    "start": "node App.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
