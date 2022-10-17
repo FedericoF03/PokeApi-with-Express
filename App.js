@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan';
 import path from 'path'
+import favicon from 'serve-favicon'
 import {fileURLToPath} from 'url';
 import homeRoute from './Routes/Home.js'
 import pokedexRoute from './Routes/Pokedex.js'
@@ -13,7 +14,9 @@ app
     .set('view engine', 'pug')
     .set('views', path.join(__dirname, '/Public/views'))
     .set('trust proxy', true)
+    .set("port", port)
     .use(morgan('dev'))
+    .use(favicon(__dirname + '/public/Assets/icon.ico'))
     .use(homeRoute)
     .use(pokedexRoute)
     .use(PokemonRoute)
