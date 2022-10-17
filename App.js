@@ -8,7 +8,7 @@ import PokemonRoute from './Routes/Pokemon.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express()
-
+const port = process.env.PORT || 3000
 app
     .set('view engine', 'pug')
     .set('views', path.join(__dirname, '/Public/views'))
@@ -19,4 +19,4 @@ app
     .use(PokemonRoute)
     
     .use(express.static(path.join(__dirname, '/')))
-app.listen(3000)
+app.listen(port)
