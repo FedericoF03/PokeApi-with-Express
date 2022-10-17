@@ -5,7 +5,7 @@ import { geType } from '../Model/TypesModel.js';
 const Router = express.Router();
     
 Router
-     .get('/pokedex', async (req, res) => {
+     .get('/Pokedex', async (req, res) => {
       let types = await geType(),
          pokes = await getAllPokemon(req.query.offset, req.query.limit),
          locals = { 

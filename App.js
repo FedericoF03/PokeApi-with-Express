@@ -10,7 +10,7 @@ const app = express()
 const port = process.env.PORT || 3000
 app
     .set('view engine', 'pug')
-    .set('views', path.join(__dirname, '/Public/views'))
+    .set('views', path.join(__dirname, 'Public', 'views'))
     // .set('trust proxy', true)
     // .use(morgan('dev'))
     // .use(favicon(__dirname + '/public/Assets/icon.ico'))
