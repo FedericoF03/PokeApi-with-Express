@@ -12,7 +12,7 @@ app
     .set('view engine', 'pug')
     .set('views', path.join(__dirname, '/Public/views'))
     // .set('trust proxy', true)
-    .use(morgan('dev'))
+    // .use(morgan('dev'))
     // .use(favicon(__dirname + '/public/Assets/icon.ico'))
     .use(homeRoute)
     // .use(pokedexRoute)
