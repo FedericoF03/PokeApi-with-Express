@@ -8,7 +8,7 @@
 .home-background {
     width: 100%;
     height: 100vh;
-    background-image: url('../Assets/img/probando.gif');
+    background-image: url('../Assets/probando.gif');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -71,7 +71,7 @@
 .search__input-button {
     border: none;
     width: 20px;
-    background: url('../Assets/img/lupa.png') no-repeat #FF5353;
+    background: url('../Assets/lupa.png') no-repeat #FF5353;
     background-size: contain;
     border-radius: 0 8px 8px 0;
 }
@@ -93,7 +93,7 @@
 .conteiner {
     height: 80vh;
     overflow-y: auto;
-    background: url('../Assets/img/background.jpg') no-repeat;
+    background: url('../Assets/background.jpg') no-repeat;
     background-size: cover;
     scroll-behavior: smooth;
 }
@@ -117,7 +117,7 @@
 
 .input__limits {
     border: none;
-    background: url('../Assets/img/limit.png') no-repeat center;
+    background: url('../Assets/limit.png') no-repeat center;
     background-size: contain;
     width: 30px;
     height: 30px;
@@ -182,7 +182,10 @@
 
 .box-poke__name-poke--margin { margin: 15px 0;}
 
-.box-poke__img-poke { max-width: 200px; }
+.box-poke__img-poke { 
+    max-width: 200px; 
+    width: 100%;
+}
 
 
 .box-poke__input-poke {
@@ -225,7 +228,7 @@
 }
 
 .box-pagination__pag-button {
-    background: url('../Assets/img/pag.png') no-repeat center;
+    background: url('../Assets/pag.png') no-repeat center;
     background-size: contain;
     margin: 0;
     height: 25px;
@@ -239,13 +242,16 @@
     justify-content: center;
 }
 
-.conteiner-pagination__arrow-top { filter: brightness(2.5); }
-
 .conteiner-pagination__add-db {
-    max-width: 50px;
     position: fixed;
     bottom: 15vh;
-    left: 0
+    left: 0;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer {
@@ -273,11 +279,12 @@
 .background-white {
     background-color: #FFFFFF;
     width: 90%;
-    max-width: 780px;
+    max-width: 500px;
     margin: auto;
     box-shadow: inset 0px 4px 15px 7px rgb(0 0 0 / 53%);
     flex-direction: column;
     padding: 20px 0;
+    position: relative;
 }
 
 .background-color {
@@ -300,19 +307,56 @@
 
 .conteiner-pokemon__box-pokemon {
     align-items: center;
+    width: 90%;
+    position: relative;
+}
+
+.modal {
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    display: none;
+    background-color: #142716cc;
+    width: 100%;
+    height: 80vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-text {
+    background-color: yellowgreen;
+    padding: 15px 0px;
+    border-radius: 50px;
 }
 
 .fav-button {
     width: 33%;
-    padding: 0px 0;
+    padding: 0;
     border-radius: 50px;
     border: none;
     background-color: rgb(255, 255, 255);
 }
 
-.fav-button__fav-logo { width: 100%; }
+.fav-button--radius {
+    border-radius: 50px;
+    border: none;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+}
 
-.shiny-fav-buttons { flex-direction: column; }
+.fav-button__fav-logo { 
+    width: 100%;
+    height: 100%;
+}
+
+.shiny-fav-buttons { 
+    flex-direction: column;
+    width: 33%;
+    display: flex;
+    gap: 10px;
+}
 
 .pokemon-data {
     background-color: #000000;
@@ -388,33 +432,33 @@
 
 .bar-background--red { background-color: rgb(250, 87, 87); }
 
-.bar2-red { background-color: rgb(243, 24, 24); }
+.bar-front--red { background-color: rgb(243, 24, 24); }
 
 .bar-background--blue { background-color: rgb(87, 109, 250); }
 
-.bar2-blue { background-color: rgb(24, 42, 243); }
+.bar-front--blue { background-color: rgb(24, 42, 243); }
 
 .bar-background--orange { background-color: rgb(250, 139, 87); }
 
-.bar2-orange { background-color: rgb(243, 101, 24); }
+.bar-front--orange { background-color: rgb(243, 101, 24); }
 
 .bar-background--light-blue { background-color: rgb(87, 215, 250); }
 
-.bar-background--light-blue { background-color: rgb(24, 166, 243); }
+.bar-front--light-blue { background-color: rgb(24, 166, 243); }
 
 .bar-background--pink { background-color: rgb(250, 87, 201); }
 
-.bar2-pink { background-color: rgb(243, 24, 159); }
+.bar-front--pink { background-color: rgb(243, 24, 159); }
 
-.stat-text {
-    width: max-content;
-}
+.stat-text { width: max-content; }
 
 .flex { display: flex; }
 
 .box-evolution {
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+    margin: 10px 0;
 }
 
 
@@ -425,11 +469,18 @@
 }
 
 .arrow {
+    max-width: 50px;
+    position: fixed;
+    bottom: 15vh;
+    right: 0;
+    display: none;
+}
+
+.arrow-evolution { 
+    transform: rotate(90deg);
     width: 20%;
     max-width: 80px;
 }
-
-.arrow-evolution { transform: rotate(90deg); }
 
 .box-evolution__evolution-link{
     color: black;

@@ -1,5 +1,5 @@
 import  express  from "express";
-import getPokemon from "../Controllers/getpoke.js";
+import {getPokemon} from "../Model/PokemonsApiModel.js";
 
 const Router = express.Router()
 
@@ -8,6 +8,10 @@ Router
         let locals = await getPokemon(req.params.poke);
         res.render('Pokemon', locals)
     })
-
+    .get('/test',(req, res) => {
+        let ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+        console.log(ip)
+        res.send('sdus')
+    })
 
 export default Router

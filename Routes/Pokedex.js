@@ -1,12 +1,13 @@
 import express from 'express';
-import sendAllPoke, { sendType } from '../Controllers/datapoke.js';
+import { getAllPokemon } from '../Model/PokemonsApiModel.js';
+import { geType } from '../Model/TypesModel.js';
 
 const Router = express.Router();
     
 Router
      .get('/pokedex', async (req, res) => {
-      let types = await sendType(),
-         pokes = await sendAllPoke(req.query.offset, req.query.limit),
+      let types = await geType(),
+         pokes = await getAllPokemon(req.query.offset, req.query.limit),
          locals = { 
             allPokes: pokes.data,
             allTypes: types.results,

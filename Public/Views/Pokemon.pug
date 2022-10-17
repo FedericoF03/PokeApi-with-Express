@@ -5,31 +5,33 @@ block content
         div.background-white.flex 
             div.background-color.flex
                 div.conteiner-pokemon.flex
-                    p.box-poke__name-poke.box-poke__name-poke--margin#namePoke= `${locals.getData.name} / N°${locals.getData.id}`
+                    p.box-poke__name-poke.box-poke__name-poke--margin#namePoke= `${locals.resPokemon.name} / N°${locals.resPokemon.id}`
                     div.conteiner-pokemon__box-pokemon.flex
-                        button.fav-button
-                            img(src="/Public/Assets/img/!.png", alt="").fav-button__fav-logo 
+                        div.modal#modal
+                            p.modal-text#info= locals.specieData.description
+                        button.fav-button.flex#info
+                            img(src="/Public/Assets/!.png", alt="").fav-button__fav-logo#info
                         div 
-                            if locals.getData.sprites.other.home.front_default
-                                img(src=`${locals.getData.sprites.other.home.front_default}`).box-poke__img-poke#imgPoke 
-                        div.shiny-fav-buttons 
-                            button
-                                img(src="/Public/Assets/img/shiny.png", alt="").fav-button__fav-logo 
-                            button
-                                img(src="/Public/Assets/img/Heart.png", alt="").fav-button__fav-logo 
+                            if locals.resPokemon.sprites.other.home.front_default
+                                img(src=`${locals.resPokemon.sprites.other.home.front_default}`).box-poke__img-poke#imgPoke 
+                        div.shiny-fav-buttons.flex 
+                            button.fav-button--radius#shiny
+                                img(src="/Public/Assets/shiny.png", alt="").fav-button__fav-logo#shiny
+                            button.fav-button--radius#fav
+                                img(src="/Public/Assets/Heart.png", alt="").fav-button__fav-logo#fav 
                 p.pokemon-data  data
-                div.data_background 
+                div.background-data 
                     p Height 
-                    p= locals.getData.height
+                    p= locals.resPokemon.height
                     p weight
-                    p= locals.getData.weight
+                    p= locals.resPokemon.weight
                 p.pokemon-data Types 
                 div.background-data
-                    each types in locals.getData.types
-                        img(src=`/Public/Assets/img/${types.type.name}.png` alt="").types
+                    each types in locals.resPokemon.types
+                        img(src=`/Public/Assets/${types.type.name}.png` alt="").types
                 p.pokemon-data  Abilities 
                 div.background-data
-                    each ability in locals.getData.abilities 
+                    each ability in locals.resPokemon.abilities 
                         if ability.is_hidden 
                             div.flex
                                 p Ability ocult
@@ -39,29 +41,29 @@ block content
                                 p Ability
                                 p= ability.ability.name
                 
-                if locals.getData.moves == null
+                if locals.resPokemon.moves == null
                     p.pokemon-data Moves
                     div.moves-data.flex 
-                        each move in locals.getData.moves
+                        each move in locals.resPokemon.moves
                             p= move.move.name
                 p.pokemon-data Method encounter / Varierities
                 div.background-data 
                     div.flex
                             p Habitat
-                            if  locals.evoSpecie.habitat !== null
-                                p= locals.evoSpecie.habitat
+                            if  locals.specieData.habitat !== null
+                                p= locals.specieData.habitat
                     div.flex
                             p Rate  
-                            p= locals.evoSpecie.rate
+                            p= locals.specieData.rate
                     div.flex
                             p Varierities 
                             div.conteiner-varierities.flex
-                                each varierities in locals.evoSpecie.varierities
+                                each varierities in locals.specieData.varierities
                                     if !varierities.is_default
                                         a(href=`${varierities.pokemon.name}`)= varierities.pokemon.name
             p.title Stat
             div.box-stat.flex
-                each stat in locals.getData.stats
+                each stat in locals.resPokemon.stats
                     if stat.stat.name === 'hp'
                         div.bar-background.bar-background--green
                             div.bar-front.bar-front--green
@@ -86,15 +88,17 @@ block content
                         div.bar-background.bar-background--pink
                             div.bar-front.bar-front--pink
                                 p.stat-text= `${stat.stat.name} ${stat.base_stat}`
-            if locals.evoChain !== null                 
+            if locals.evoChainData !== null                 
                 p.title Evolution Chain
                 div.box-evolution.flex
-                    each evochain in locals.evoChain
+                    -let count = 1
+                    each evoChainData in locals.evoChainData
                         div.box-evolution__pokemon
-                            p.box-poke__name-poke#namePoke= `${evochain.species_name} / N°${evochain.img}`
-                            img(src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${evochain.img}.png`).box-poke__img-poke#imgPoke 
-                        a(href=`/pokemon/${evochain.species_name}`).box-evolution__evolution-link Evolved!
-                        img(src="/Public/Assets/img/arrow-evo.png", alt="arrow").arrow
-                img( src="/Public/Assets/img/arrow.png" alt="arrow").arrow#arrow
-    script(type="module" src="/Public/Js/front.js") 
+                            p.box-poke__name-poke#namePoke= `${evoChainData.species_name} / N°${evoChainData.img}`
+                            img(src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${evoChainData.img}.png`).box-poke__img-poke#imgPoke 
+                        a(href=`/pokemon/${evoChainData.species_name}`).box-evolution__evolution-link Evolved!
+                        if locals.evoChainData.length > count++
+                            img(src="/Public/Assets/arrow-evo.png", alt="arrow").arrow-evolution
+            img( src="/Public/Assets/arrow.png" alt="arrow").arrow#arrow
+    script(type="module" src="/Public/Js/Listeners.js") 
     include footer.pug

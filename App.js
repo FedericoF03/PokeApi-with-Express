@@ -12,9 +12,11 @@ const app = express()
 app
     .set('view engine', 'pug')
     .set('views', path.join(__dirname, '/Public/views'))
+    .set('trust proxy', true)
     .use(morgan('dev'))
     .use(homeRoute)
     .use(pokedexRoute)
     .use(PokemonRoute)
+    
     .use(express.static(path.join(__dirname, '/')))
 app.listen(3000)
