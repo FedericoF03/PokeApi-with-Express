@@ -14,7 +14,6 @@ app
     .set('view engine', 'pug')
     .set('views', path.join(__dirname, '/Public/views'))
     .set('trust proxy', true)
-    .set("port", port)
     .use(morgan('dev'))
     .use(favicon(__dirname + '/public/Assets/icon.ico'))
     .use(homeRoute)
@@ -22,4 +21,6 @@ app
     .use(PokemonRoute)
     
     .use(express.static(path.join(__dirname, '/')))
-app.listen(port)
+app.listen(port, () => {
+    console.log(`run in the port ${port}`)
+})
