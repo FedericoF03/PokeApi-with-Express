@@ -1,5 +1,4 @@
 import express from 'express'
-import morgan from 'morgan';
 import path from 'path'
 import favicon from 'serve-favicon'
 import {fileURLToPath} from 'url';
