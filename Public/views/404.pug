@@ -1,0 +1,8 @@
+extends header.pug
+
+block content
+    div.conteiner#conteiner
+        p.form.flex= `Error de codigo: ${locals.code} ${locals.message} llave afectada ${locals.keyValue}` 
+            a(href="/PokemonAdd") Volver a hacer una peticion 
+            script(type="module" src="/Public/Js/Listeners.js") 
+    include footer.pug

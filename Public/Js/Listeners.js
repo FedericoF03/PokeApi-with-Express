@@ -1,91 +1,97 @@
-const hiddenOrder = document.getElementById('hiddenOrder'),
-selectOrder = document.getElementById('selectOrder'),
-selectMode = document.getElementById('selectMode'),
-selectType = document.getElementById('selectType'),
-hiddenLimit = document.getElementById('hiddenLimit'),
-hiddenOffset = document.getElementById('hiddenOffset'),
-form = document.getElementById('createForm'),
-arrow = document.getElementById('arrow'),
-cont = document.getElementById('conteiner'),
-search = document.getElementById('inputSearch'),
-query = document.getElementById('searchPokemon'),
-shiny = document.getElementById('shiny'),
-imgPoke = document.getElementById('imgPoke'),
-info = document.getElementById('info'),
-modalDisplay = document.getElementById('modal'),
-favInput = document.getElementById('fav');
+const $HIDDENORDER = document.getElementById('hiddenOrder'),
+$HIDDENMODE = document.getElementById('hiddenMode'),
+$HIDDENLIMIT = document.getElementById('hiddenLimit'),
+$HIDDENOFFSET = document.getElementById('hiddenOffset'),
+$SELECTORDER = document.getElementById('selectOrder'),
+$SELECTMODE = document.getElementById('selectMode'),
+$SELECTTYPE = document.getElementById('selectType'),
+$FORM = document.getElementById('createForm'),
+$ARROW = document.getElementById('arrow'),
+$CONT = document.getElementById('conteiner'),
+$SEARCH = document.getElementById('inputSearch'),
+$QUERY = document.getElementById('searchPokemon'),
+$SHINY = document.getElementById('shiny'),
+$IMGPOKE = document.getElementById('imgPoke'),
+$IMGSHINY = document.getElementById('imgShiny'),
+$INFO = document.getElementById('info'),
+$MODALDISPLAY = document.getElementById('modal'),
+$FAVINPUT = document.getElementById('fav'),
+$LINK = document.getElementById('link');
 
 document.addEventListener('click', e => {
 
-    if(e.target.id === 'click') {
-        hiddenLimit.value = e.target.textContent;
-        hiddenOffset.value = 0;
-        form.submit();
+    if(e.target.id === 'inputLimit') {
+        $HIDDENLIMIT.value = e.target.textContent;
+        $HIDDENOFFSET.value = 0;
+        $FORM.submit();
     }
+    if (e.target === $SEARCH) if ($QUERY.value.trim() !== '') location.pathname = `Pokemon/${$QUERY.value.trim().toLowerCase()}`;
 
-    if (e.target === search) { 
-        if (query.value.trim() !== '') location.pathname = `Pokemon/${query.value.trim().toLowerCase()}`};
-
-    if (e.target === arrow) cont.scrollTop = 0;
+    if (e.target === $ARROW) $CONT.scrollTop = 0;
 
     if (e.target.id === 'pag') {
-        hiddenOffset.value = e.target.value;
-        form.submit();
+        $HIDDENOFFSET.value = e.target.value;
+        $FORM.submit();
     }   
         
     if (e.target.id === 'shiny') {
-        let routeShiny = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/',
-            routeNormal = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/';
-
-        let change = imgPoke.src.includes(routeShiny) ? imgPoke.src.replace(routeShiny, routeNormal) : imgPoke.src.replace(routeNormal, routeShiny)
-        imgPoke.src = change
+        if ($IMGPOKE.hasAttribute('hidden')) $IMGPOKE.removeAttribute('hidden')
+        else  $IMGPOKE.setAttribute('hidden','hidden')
+        if ($IMGSHINY.hasAttribute('hidden')) $IMGSHINY.removeAttribute('hidden')
+        else  $IMGSHINY.setAttribute('hidden','hidden')    
     }
    
     if(e.target.id === 'info' || e.target.id === 'modal' ) {
-        modalDisplay.style.display == 'flex' ? modalDisplay.style.display = 'none' :  modalDisplay.style.display = 'flex'
+        $MODALDISPLAY.style.display == 'flex' 
+        ? $MODALDISPLAY.style.display = 'none' 
+        :  $MODALDISPLAY.style.display = 'flex'
     }
 
-    if(e.target.id === 'fav' ) {
-        let text = document.getElementById('namePoke').textContent;
-        text = text.split('/');
-        let number = text[1].split('N°'),
-            si = [],
-            pokemon = { name : text[0], id : number[1] }
+    if(e.target.id === $FAVINPUT.id ) {
+        let nameToSave = document.getElementById('namePoke').textContent;
+        nameToSave = nameToSave.split('/');
+        let id = nameToSave[1].split('N°'),
+            arrayPoke = [],
+            pokemon = { name : nameToSave[0], id : id[1], img: $IMGPOKE.src }
 
         if (localStorage.getItem('fav') !== null) {
-            let lel = JSON.parse(localStorage.getItem('fav'));
-            lel.push(pokemon)
-            lel = JSON.stringify(lel)
-            localStorage.setItem('fav', lel )
+            let poke = JSON.parse(localStorage.getItem('fav'));
+            if (poke.filter(element => element.name === nameToSave[0] ).length > 0) {
+                poke = poke.filter(element => element.name !== nameToSave[0])
+            } else poke.push(pokemon)
+            poke = JSON.stringify(poke)
+            localStorage.setItem('fav', poke )
         } else {
-            si.push(pokemon)
-            si = JSON.stringify(si)
-            localStorage.setItem('fav', si )
-        }
-        let lol = localStorage.getItem('fav')
-        console.log(JSON.parse(lol))
-       
+            arrayPoke.push(pokemon)
+            arrayPoke = JSON.stringify(arrayPoke)
+            localStorage.setItem('fav', arrayPoke )
+        }   
     }
-})
-
-document.addEventListener('change', e => {
-
-    if (e.target === selectMode) location.href = e.target.value;
     
-    if (e.target === selectOrder) {
-        hiddenOrder.value = e.target.value;
-        form.submit();
+    
+})
+if (location.pathname.match('/Pokedex')) $LINK.href = '/';
+document.addEventListener('change', e => {
+    if (e.target === $SELECTMODE) {
+        if(location.pathname.match('/Pokemon')) location.href = `http://localhost:3000/pokedex?mode=${e.target.value}`
+        else location.href = `http://localhost:3000${location.pathname}?mode=${e.target.value}`;
     }
-
-    if (e.target === selectType) location.pathname = `/${e.target.value}`; 
+    
+    if (e.target === $SELECTORDER) {
+        $HIDDENORDER.value = e.target.value;
+        $FORM.submit();
+    }
+    
+    if (e.target === $SELECTTYPE) {
+        if (e.target.value === 'all')  location.href = `/Pokedex?mode=${e.target.value}`
+        else location.href = `/types/${e.target.value}?mode=${$HIDDENMODE.value}`; 
+        
+    }
 })
 
-cont.addEventListener('scroll', () => { 
-    if (cont.scrollTop > 500) arrow.style.display = 'block';
-    if (cont.scrollTop < 10) arrow.style.display = 'none';
-})
+$CONT.addEventListener('scroll', () => $CONT.scrollTop > 500 ? $ARROW.style.display = 'block' : $ARROW.style.display = 'none');
 
 document.addEventListener('keydown', e => { 
-    if ( e.keyCode === 13 ) if (query.value.trim() !== '') location.href = `Pokemon/${query.value.trim().toLowerCase()}`;
+if ( e.keyCode === 13 ) if ($QUERY.value.trim() !== '') location.pathname = `Pokemon/${$QUERY.value.trim().toLowerCase()}`;
 })
 

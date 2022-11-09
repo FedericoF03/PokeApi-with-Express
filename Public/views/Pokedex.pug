@@ -11,43 +11,56 @@ block content
                     button.input__limits#inputLimit 100
             div.types__box.flex
                 select.select__type#selectType
-                    option(value="") All
-                    each types in locals.allTypes
+                    option(value="") types
+                    option(value="all") All
+                    each types in allTypes
                         if types.name !== 'unknown'
                             option=types.name
                 select.select__order#selectOrder
+                    mixin order(name, subname) 
+                            if(name === locals.order)
+                                option(value=name selected)= subname
+                            else
+                                option(value=name)= subname
                     optgroup(label="Id")
-                        option( value="asc") Asc
-                        option( value="desc") Desc
+                        +order("asc", "Asc")
+                        +order("desc", "Desc")
                     optgroup(label="alphabetical")
-                        option( value="a-z") A-Z
-                        option( value="z-a") Z-A
+                        +order("a-z", "A-z")
+                        +order("z-a", "Z-a")
         main.main.flex
             div.conteiner__pokes.flex#backPoke
-                each value in locals.allPokes
+                each value in locals.allPokemons
                     div.conteiner__pokes__box-poke.flex
-                        p.box-poke__name-poke#namePoke= value.names
-                        img( src=`${value.sprites[0]}` alt=`${value.names}`).box-poke__img-poke#imgPoke
+                        div.box-poke__name-poke
+                            p#namePoke= `${value.name} / N°${value.id}`
+                        if(value.sprites.front_default !== null)
+                            img( src=`${value.sprites.front_default}` alt=`${value.name}`).box-poke__img-poke#imgPoke
                         div.box-poke__input-poke.flex
-                            a(href=`/pokemon/${value.names}`).input-poke__link#linkPoke
+                            a(href=`/pokemon/${value.name}`).input-poke__link#linkPoke
                                 div 
                                     p.input-poke__link catch!
                                     img(src="/Public/Assets/pokeball.png" alt="Pokeball link").input-poke__link-img
             div.conteiner-pagination.flex
-                a(href="/db/addDB" ).conteiner-pagination__add-db +
-                div.conteiner-pagination__box-pagination.flex#paginations
-                    -let number = -1
-                    -let offsetNow = locals.limit * number
-                    while parseInt(number++) < Math.floor( locals.count / locals.limit )
-                        if((locals.limit * (number - 3)) < locals.offset && locals.offset < (locals.limit * (number + 3)) )
-                            if (locals.limit * number == locals.offset)
-                                button( type="submit" value=`${(locals.limit * number)}`).box-pagination__pag-button.flex.pag_now#pag= number
-                            else
-                                button( type="submit" value=`${(locals.limit * number)}`).box-pagination__pag-button.flex#pag= number
+                div.conteiner-pagination__add-db
+                    a(href="/PokemonAdd" ) +
+                    a(href="/Fav" )
+                        img(src="/Public/Assets/hearth.png", alt="fav").nav__logo.fav_icon#iconFav
+                if (locals.count !== 0)
+                    div.conteiner-pagination__box-pagination.flex#paginations
+                        -let number = -1
+                        -let offsetNow = limit * number
+                        while parseInt(number++) < Math.floor( count / limit )
+                            if((limit * (number - 3)) < offset && offset < (limit * (number + 3)) )
+                                if (limit * number == offset)
+                                    button( type="submit" value=`${(limit * number)}`).box-pagination__pag-button.flex.pag_now#pag= number
+                                else
+                                    button( type="submit" value=`${(limit * number)}`).box-pagination__pag-button.flex#pag= number
                 img( src="/Public/Assets/arrow.png" alt="arrow").arrow.arrow-right#arrow
             form(action="" method="get")#createForm
-                input(type="hidden" name="offset" value=`${locals.offset}`)#hiddenOffset
-                input(type="hidden" name="limit" value=`${locals.limit}`)#hiddenLimit
-                input(type="hidden" name="order" value=`${locals.order}`)#hiddenOrder
-    script(type="module" src="/Public/Js/Listeners.js") 
+                input(type="hidden" name="offset" value=`${offset}`)#hiddenOffset
+                input(type="hidden" name="limit" value=`${limit}`)#hiddenLimit
+                input(type="hidden" name="order" value=`${order}`)#hiddenOrder
+                input(type="hidden" name="mode" value=`${mode}`)#hiddenMode
     include footer.pug
+    script(type="module" src="/Public/Js/Listeners.js") 

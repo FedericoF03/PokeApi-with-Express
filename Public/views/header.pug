@@ -9,14 +9,20 @@ head
 body 
     header
         nav.nav.flex
-            a(href="/").nav__logo
+            a(href="/Pokedex").nav__logo#link 
                 img(src="/Public/Assets/logo.gif" alt="logotype").nav__logo
             div.nav__conteiner-search.flex
                 input(type="search" placeholder="Search Pokemon / Id").search__input-search#searchPokemon
                 input(type="button").search__input-button#inputSearch
             div.flex
                 select.conteiner-mode#selectMode
-                    option( value="") All
-                    option( value="api") Api
-                    option( value="db") Db
+                    mixin mode(name, subname) 
+                        if(name === locals.mode)
+                            option(value=name selected)= subname
+                        else
+                            option(value=name)= subname
+                    +mode("all", "All")
+                    +mode("api", "Api")
+                    +mode("db", "Db")
+
     block content 
