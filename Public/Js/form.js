@@ -1,3 +1,4 @@
+import header from "./header.js";
 const $FORM = document.getElementById("form"),
     $AL = document.getElementById('arrowLeft'),
     $AR = document.getElementById('arrow_Right'),
@@ -13,9 +14,10 @@ let count = 1,
 
 const validation = validate => {
     for(let key in validate) {     
-        if($CONTEINER.children.length > 2) $CONTEINER.removeChild($CONTEINER.lastChild);
+        if($CONTEINER.children.length > 3) $CONTEINER.removeChild($CONTEINER.lastChild);
         if (validate[key] === '') {
             $ERRORS.textContent = `Campo obligatorio: "${key.match("_") ? key.slice(1).replace("_", " ") : key.slice(1)}" vacio, por favor rellenar`;
+            $ERRORS.classList.add('errform')
             return $CONTEINER.appendChild($ERRORS);
         }
     }
@@ -47,7 +49,11 @@ const addInput = (conteiner, type, placeholder, limits, name) => {
         input.appendChild(option2);
     }
     input.setAttribute('name', name);
-    if(type === 'text') input.setAttribute('placeholder', placeholder);
+    if(type === 'text') {
+        input.classList.add('text-form')
+        input.setAttribute('placeholder', placeholder);
+    }
+    
     if(conteiner.children.length < limits) conteiner.appendChild(input);
 }
 
@@ -79,7 +85,7 @@ document.addEventListener('click', e => {
     if (e.target.id === $AL.id) directionals(arrowLimits);
     arrowLimits.sort((a,b) => b - a);
     if (e.target.id === $AR.id) directionals(arrowLimits);
-    if (e.target.id === $EVOINPUT.id) addInput('evoChainName', 'text', 'pokemon name to which it will evolve', 4, 'evoChainName');
+    if (e.target.id === $EVOINPUT.id) addInput('evoChainName', 'text', 'Chain evolve', 4, 'evoChainName');
     if (e.target.id === $ABILITIESINPUT.id) {
         addInput('abilities', 'select', '', 99, 'ability')
         addInput('abilities', 'text', 'Pokemon abilitie', 99, 'abilities')

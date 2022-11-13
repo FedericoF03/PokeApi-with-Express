@@ -2,62 +2,63 @@ extends header.pug
 
 block content
     div.conteiner#conteiner
-        div#conteinerForm
+        div.addzone#conteinerForm
+            h1.center.add-test-title Add Pokemon
             form(action="", method="post" enctype="application/x-www-form-urlencoded" )#form.form.flex
-                input(type="button" value="flecha izq")#arrowLeft
-                input( type="text" name="pokemoName" placeholder="Pokemon name*")#name
-                div(hidden)
-                    input(type="number" name="height" placeholder="Pokemon Height*")#height
-                    input( type="number" name="weight" placeholder="Pokemon Weight*")#weight
-                div(hidden) 
-                    input( type="url" name="sprites" placeholder="Pokemon img*")#img
-                    input( type="url" name="sprites" placeholder="Pokemon shiny*")#imgShiny
-                    input( type="url" name="sprites" placeholder="Pokemon back img")
-                    input( type="url" name="sprites" placeholder="Pokemon shiny back img")
-                div(hidden)
-                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon hp*")#hp
-                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon attack*")#attack
-                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon defense*")#defense
-                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Attack*")#specialAttack
-                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Defense*")#specialDefense
-                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon speed*")#speed
-                div(hidden)
-                    select(name="types" placeholder="Pokemon type*")#type
+                input(type="button" value="Ant")#arrowLeft.arrowbuttonstest
+                input( type="text" name="pokemoName" placeholder="Pokemon name*")#name.text-formv
+                div(hidden).center
+                    input(type="number" name="height" placeholder="Pokemon Height*")#height.text-form
+                    input( type="number" name="weight" placeholder="Pokemon Weight*")#weight.text-form
+                div(hidden).center
+                    input( type="url" name="sprites" placeholder="Pokemon img*")#img.text-form
+                    input( type="url" name="sprites" placeholder="Pokemon shiny*")#imgShiny.text-form
+                    input( type="url" name="sprites" placeholder="Pokemon back img").text-form
+                    input( type="url" name="sprites" placeholder="Pokemon shiny back img").text-form
+                div(hidden).center
+                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon hp*")#hp.text-form
+                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon attack*")#attack.text-form
+                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon defense*")#defense.text-form
+                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Attack*")#specialAttack.text-form
+                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Defense*")#specialDefense.text-form
+                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon speed*")#speed.text-form
+                div(hidden).center
+                    select(name="types" placeholder="Pokemon type*")#type.abilitiesform
                         option(value=``) Types
                         each value of locals.types.results
                             if (value.name !== 'unknown')
                                 option(value=`${value.name}`)= value.name
-                    select(type="text" name="types" placeholder="Pokemon second type")
+                    select(type="text" name="types" placeholder="Pokemon second type").abilitiesform
                         option(value=``) Types
                         each value of locals.types.results 
                             if (value.name !== 'unknown')
                                 option(value=`${value.name}`)= value.name
-                div(hidden)#evoChainName
-                    input(type="button", value="+")#evoButton
-                    input(type="text" name="evoChainName" placeholder="pokemon name to which it will evolve")
-                div(hidden)#abilities
-                    input(type="button", value="+")#abilitiesButton
+                div(hidden)#evoChainName.center
+                    input(type="button", value="+")#evoButton.botontesttest
+                    input(type="text" name="evoChainName" placeholder="Chain evolve").text-form
+                div(hidden)#abilities.center.abilitiesform
+                    div
+                        input(type="button", value="+")#abilitiesButton.botontesttest
                     select(name="ability") 
                         option(value="Ability") Ability
                         option(value="Ability Ocult") Ability ocult
-                    input(type="text" name="abilities" placeholder="Pokemon abilitie*")#abilities
-                div(hidden)#moves
-                    input(type="button", value="+")#movesButton
-                    input( type="text" name="moves" placeholder="Pokemon moves*")#moves
-                div(hidden)
-                    input(type="number" name="rate" placeholder="Pokemon rate*")#rate
-                    input(type="text" name="description" placeholder=" Pokemon Description*")#descrp
-                    input(type="text" name="habitat" placeholder="Pokemon Habitat*")#habitat
-                div(hidden)#varierities
-                    input(type="button", value="+")#varieritiesButton
-                    input(type="text" name="varierities" placeholder="Pokemon Varieritie")
-                div(hidden)
+                    input(type="text" name="abilities" placeholder="Pokemon abilitie*")#abilities.text-form
+                div(hidden)#moves.center
+                    input(type="button", value="+")#movesButton.botontesttest
+                    input( type="text" name="moves" placeholder="Pokemon moves*")#moves.text-form
+                div(hidden).center
+                    input(type="number" name="rate" placeholder="Pokemon rate*")#rate.text-form
+                    input(type="text" name="description" placeholder=" Pokemon Description*")#descrp.text-form
+                    input(type="text" name="habitat" placeholder="Pokemon Habitat*")#habitat.text-form
+                div(hidden)#varierities.center
+                    input(type="button", value="+")#varieritiesButton.botontesttest
+                    input(type="text" name="varierities" placeholder="Pokemon Varieritie").text-form
+                div(hidden).center
                     label(for="leg") Legendary 
                     input(id="leg" type="checkbox" name="legendary")
                     label(for="myt") Mythical 
                     input(id="myt" type="checkbox" name="mythical")
-                input(type="button" value="flecha der")#arrow_Right
-            input( type="submit" value="Submit" form="form")
+                input(type="button" value="Sig")#arrow_Right.arrowbuttonstest
+            input( type="submit" value="Submit" form="form").subform
     script(type="module" src="/Public/Js/form.js") 
-    script(type="module" src="/Public/Js/Listeners.js") 
     include footer.pug

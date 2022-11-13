@@ -10,12 +10,17 @@ block content
                     button.input__limits#inputLimit 50
                     button.input__limits#inputLimit 100
             div.types__box.flex
-                select.select__type#selectType
-                    option(value="") types
-                    option(value="all") All
-                    each types in allTypes
-                        if types.name !== 'unknown'
-                            option=types.name
+                div.select__type
+                    div.flex.type-button
+                        button.buttontest#selectType Types
+                        img(src="/Public/Assets/arrow-type.png", alt="arrow").test2arrow#imgArrow
+                    ul.ul.nones#menu
+                        li.option
+                            a(href=`/Pokedex`) All
+                        each types in allTypes
+                            if types.name !== 'unknown' && types.name !==  'shadow'
+                                li.option
+                                    a(href=`/types/${types.name}`)= types.name
                 select.select__order#selectOrder
                     mixin order(name, subname) 
                             if(name === locals.order)
@@ -32,8 +37,7 @@ block content
             div.conteiner__pokes.flex#backPoke
                 each value in locals.allPokemons
                     div.conteiner__pokes__box-poke.flex
-                        div.box-poke__name-poke
-                            p#namePoke= `${value.name} / N°${value.id}`
+                        p.box-poke__name-poke#namePoke= `${value.name} / N°${value.id}`
                         if(value.sprites.front_default !== null)
                             img( src=`${value.sprites.front_default}` alt=`${value.name}`).box-poke__img-poke#imgPoke
                         div.box-poke__input-poke.flex
@@ -43,7 +47,8 @@ block content
                                     img(src="/Public/Assets/pokeball.png" alt="Pokeball link").input-poke__link-img
             div.conteiner-pagination.flex
                 div.conteiner-pagination__add-db
-                    a(href="/PokemonAdd" ) +
+                    a(href="/PokemonAdd" )
+                        img(src="/Public/Assets/poke-add.png", alt="add").add-button
                     a(href="/Fav" )
                         img(src="/Public/Assets/hearth.png", alt="fav").nav__logo.fav_icon#iconFav
                 if (locals.count !== 0)
@@ -63,4 +68,4 @@ block content
                 input(type="hidden" name="order" value=`${order}`)#hiddenOrder
                 input(type="hidden" name="mode" value=`${mode}`)#hiddenMode
     include footer.pug
-    script(type="module" src="/Public/Js/Listeners.js") 
+    script( type="module" src="/Public/Js/pokedex.js") 

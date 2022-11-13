@@ -7,10 +7,11 @@ import PokemonRoute from './Routes/Pokemon.js'
 import PokeAddRoute from './Routes/pokeAdd.js'
 import TypesRoute from './Routes/Types.js'
 import FavRoute from './Routes/Fav.js'
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const app = express()
-const port = process.env.PORT || 3000
+const __filename = fileURLToPath(import.meta.url),
+    __dirname = path.dirname(__filename),
+    app = express(),
+    port = process.env.PORT || 3000
+
 app
     .set('view engine', 'pug')
     .set('views', path.join(__dirname, 'Public', 'views'))

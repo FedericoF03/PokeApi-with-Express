@@ -19,10 +19,10 @@ block content
                                         img(src="/Public/Assets/pokeball.png" alt="Pokeball link").input-poke__link-img
                 div.conteiner-pagination.flex
                     div.conteiner-pagination__add-db
-                        a(href="/PokemonAdd" ) +
+                        a(href="/PokemonAdd" )
+                            img(src="/Public/Assets/poke-add.png", alt="add").add-button
                         a(href="/Fav" )#LinkFav
                             img(src="/Public/Assets/hearth.png", alt="fav").nav__logo.fav_icon#iconFav
                     img( src="/Public/Assets/arrow.png" alt="arrow").arrow.arrow-right#arrow
     include footer.pug
-    script(type="module" src="/Public/Js/Listeners.js") 
     script(type="module" src="/Public/Js/fav.js") 

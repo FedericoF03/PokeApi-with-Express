@@ -1,3 +1,5 @@
+import arrow from './arrow.js'
+
 let $TEMPLATE = document.getElementById('template').content,
     $BACK = document.getElementById('backPoke'),
     $FRAGMENT = document.createDocumentFragment(),
@@ -6,24 +8,31 @@ let $TEMPLATE = document.getElementById('template').content,
 
 
 const fav = () => {
-
     $BACK.innerHTML = ""
     let test = localStorage.getItem('fav')
     test = JSON.parse(test)
-    test.forEach(element => {
-        $TEMPLATE.getElementById('namePoke').textContent = `${element.name}/N°${element.id}`
-        $TEMPLATE.getElementById('imgPoke').src = element.img
-        $TEMPLATE.getElementById('imgPoke').alt = element.name
-        $TEMPLATE.getElementById('linkPoke').href = `/pokemon/${element.name}`
-        let clone = document.importNode($TEMPLATE, true)
-        $FRAGMENT.appendChild(clone)
-    });
-    $BACK.appendChild($FRAGMENT)
+    if (test !== null ) { 
+        if(test.length > 0) {
+            test.forEach(element => {
+                $TEMPLATE.getElementById('namePoke').textContent = `${element.name}/N°${element.id}`
+                $TEMPLATE.getElementById('imgPoke').src = element.img
+                $TEMPLATE.getElementById('imgPoke').alt = element.name
+                $TEMPLATE.getElementById('linkPoke').href = `/pokemon/${element.name}`
+                let clone = document.importNode($TEMPLATE, true)
+                $FRAGMENT.appendChild(clone)
+            });
+            return $BACK.appendChild($FRAGMENT)     
+        }    
+    }
+    let error = document.createElement('p')
+    error.textContent = 'No hay pokemons favoritos guardados'
+    error.classList.add('box-poke__name-poke', 'center')
+    $BACK.appendChild(error)
 }
 fav()
 if(location.pathname === '/Fav') {
     $fava.href = '/Pokedex'
-    $icon.src = '/Public/Assets/iconHome.png'
+    
 }
 
 document.addEventListener('click', (e)=> {
