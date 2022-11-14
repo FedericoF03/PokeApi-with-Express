@@ -20,7 +20,7 @@ block content
                         each types in allTypes
                             if types.name !== 'unknown' && types.name !==  'shadow'
                                 li.option
-                                    a(href=`/types/${types.name}`)= types.name
+                                    a(href=`/types/${types.name}`)#typesH= types.name
                 select.select__order#selectOrder
                     mixin order(name, subname) 
                             if(name === locals.order)

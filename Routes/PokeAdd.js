@@ -16,7 +16,7 @@ route
             getTLP = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=0&offset=${resCountApi.count - 1}`),
             resTLP = await getTLP.json(),
             getCount = await fetch(resTLP.results[0].url),
-            resCount = await getCount.json();
+            resCount = await getCount.json(),
             countDb = await PokemonController.countController(),
             count = countDb + parseInt(resCount.id),
             body = req.body,

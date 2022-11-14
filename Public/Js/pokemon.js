@@ -167,6 +167,7 @@ else if($typeNow ===  types.electric) ChangeColor(colors.yellow)
 else if($typeNow ===  types.psychic) ChangeColor(colors.pinkSoft)
 else if($typeNow ===  types.ice) ChangeColor(colors.lightBlue)
 else if($typeNow ===  types.dragon) ChangeColor(colors.lightBlueHard)
+else if($typeNow ===  types.fairy) ChangeColor(colors.pinkHard)
 else ChangeColor(colors.dark)
 
 for (let kid of kids) {

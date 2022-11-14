@@ -23,16 +23,23 @@ block content
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Defense*")#specialDefense.text-form
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon speed*")#speed.text-form
                 div(hidden).center
-                    select(name="types" placeholder="Pokemon type*")#type.abilitiesform
-                        option(value=``) Types
-                        each value of locals.types.results
-                            if (value.name !== 'unknown')
-                                option(value=`${value.name}`)= value.name
-                    select(type="text" name="types" placeholder="Pokemon second type").abilitiesform
-                        option(value=``) Types
-                        each value of locals.types.results 
-                            if (value.name !== 'unknown')
-                                option(value=`${value.name}`)= value.name
+                    input(type="hidden" name="types").abilitiesform#type1
+                    input(type="hidden" name="types").abilitiesform#type2
+                    div.select__typev2.flex
+                        div.flex.type-button
+                            button.buttontest#selectType1 Types
+                            img(src="/Public/Assets/arrow-type.png", alt="arrow").test2arrow#imgArrow
+                            ul.ul.ul2.nones#menu
+                                each types in locals.types.results
+                                    if (types.name !== 'unknown' && types.name !== 'shadow')
+                                        li.option= types.name
+                        div.flex.type-button
+                            button.buttontest#selectType2 Types
+                            img(src="/Public/Assets/arrow-type.png", alt="arrow").test2arrow#imgArrow2
+                            ul.ul.ul2.nones#menu2
+                                each types in locals.types.results
+                                    if types.name !== 'unknown' && types.name !== 'shadow'
+                                        li.option= types.name
                 div(hidden)#evoChainName.center
                     input(type="button", value="+")#evoButton.botontesttest
                     input(type="text" name="evoChainName" placeholder="Chain evolve").text-form

@@ -7,6 +7,14 @@ const $FORM = document.getElementById("form"),
     $EVOINPUT = document.getElementById('evoButton'),
     $ABILITIESINPUT = document.getElementById('abilitiesButton'),
     $MOVESINPUT = document.getElementById('movesButton'),
+    $menu = document.getElementById('menu'),
+    $menu2 = document.getElementById('menu2'),
+    $type1 = document.getElementById('type1'),
+    $type2 = document.getElementById('type2'),
+    $select = document.getElementById('selectType1'),
+    $select2 = document.getElementById('selectType2'),
+    $ARROWTYPE = document.getElementById('imgArrow'),
+    $ARROWTYPE2 = document.getElementById('imgArrow2'),
     $VARIERITIESINPUT = document.getElementById('varieritiesButton');
 
 let count = 1,
@@ -74,7 +82,7 @@ $FORM.addEventListener("submit", e => {
         $moves: document.getElementById('moves').value,
         $habitat: document.getElementById('habitat').value,
         $rate: document.getElementById('rate').value,
-        $type: document.getElementById('type').value,
+        $type: document.getElementById('type1').value,
         $descrp: document.getElementById('descrp').value
     };
     if(validation(validates) === true) $FORM.submit();       
@@ -92,4 +100,49 @@ document.addEventListener('click', e => {
     }
     if (e.target.id === $MOVESINPUT.id) addInput('moves', 'text', 'Pokemon moves', 99, 'moves');
     if (e.target.id === $VARIERITIESINPUT.id) addInput('varierities', 'text', 'Pokemon Varieritie', 99, 'varierities');
+
+    if ($ARROWTYPE.classList.contains('sus')) {
+        $menu.classList.add('nones')
+        $menu.classList.remove('flex')
+        $ARROWTYPE.classList.remove('sus')
+    }
+    if (e.target === $select) {
+        e.preventDefault()
+        if($menu.classList.contains('nones')) {
+            $menu.classList.toggle('flex')
+            $menu.classList.toggle('nones')
+        } else if ($menu.classList.contains('flex')) {
+            $menu.classList.toggle('flex')
+            $menu.classList.toggle('nones')
+        }   
+        $ARROWTYPE.classList.toggle('sus')
+    }
+
+    if ($ARROWTYPE2.classList.contains('sus')) {
+        $menu2.classList.add('nones')
+        $menu2.classList.remove('flex')
+        $ARROWTYPE2.classList.remove('sus')
+    }
+    if (e.target === $select2) {
+        e.preventDefault()
+        if($menu2.classList.contains('nones')) {
+            $menu2.classList.toggle('flex')
+            $menu2.classList.toggle('nones')
+        } else if ($menu2.classList.contains('flex')) {
+            $menu2.classList.toggle('flex')
+            $menu2.classList.toggle('nones')
+        }   
+        $ARROWTYPE2.classList.toggle('sus')
+    }
+})
+
+
+$menu.addEventListener('click', (e) =>{
+    $type1.value = e.target.textContent
+    $select.textContent = e.target.textContent
+})
+
+$menu2.addEventListener('click', (e) =>{
+    $type2.value = e.target.textContent
+    $select2.textContent = e.target.textContent
 })

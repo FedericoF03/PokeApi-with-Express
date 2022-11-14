@@ -9,7 +9,8 @@ $SELECTTYPE = document.getElementById('selectType'),
 $MENU = document.getElementById('menu'),
 $FORM = document.getElementById('createForm'),
 $ARROWTYPE = document.getElementById('imgArrow'),
-$LINK = document.getElementById('link');
+$LINK = document.getElementById('link'),
+$typos = document.querySelectorAll('#typesH')
 
 document.addEventListener('click', e => {
 
@@ -36,7 +37,6 @@ document.addEventListener('click', e => {
         } else if ($MENU.classList.contains('flex')) {
             $MENU.classList.toggle('flex')
             $MENU.classList.toggle('nones')
-            console.log('entro2')
         }   
         $ARROWTYPE.classList.toggle('sus')
     }
@@ -56,3 +56,7 @@ document.addEventListener('change', e => {
 })
 
 if (location.pathname.match('/Pokedex')) $LINK.href = '/';
+
+$typos.forEach(element => {
+    element.href = element.href + location.search
+})

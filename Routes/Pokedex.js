@@ -21,14 +21,22 @@ Router
                   let offset = parseInt(pokemons.offset) - parseInt(pokemons.count) ;
                   if (offset < 0) offset = 0;
                   pokemonsDb = await PokemonController.getAllController(offset , req.query.limit);
-                  pokemons.pokemonsList = pokemons.pokemonsList.concat(pokemonsDb.result);
-                  if(pokemons.pokemonsList.length > req.query.limit) pokemons.pokemonsList.length = req.query.limit;
-                  count = pokemons.count + pokemonsDb.count;
+                  if(pokemonsDb !== null) {
+                     pokemons.pokemonsList = pokemons.pokemonsList.concat(pokemonsDb.result);
+                     if(pokemons.pokemonsList.length > req.query.limit) pokemons.pokemonsList.length = req.query.limit;
+                     count = pokemons.count + pokemonsDb.count;
+                  }
+                  
                }
             } else{
                pokemonsDb = await PokemonController.getAllController(req.query.offset, req.query.limit);
-               pokemons.pokemonsList = pokemonsDb.result;
-               count = pokemonsDb.count;
+               if(pokemonsDb !== null) {
+                  pokemons.pokemonsList = pokemonsDb.result;
+                  count = pokemonsDb.count;
+               } else {
+                  res.render('null')
+               }
+               
             }      
          }
          

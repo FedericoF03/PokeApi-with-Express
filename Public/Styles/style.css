@@ -151,7 +151,6 @@
     padding: 0;
     border-radius: 50px;
     font-weight: 700;
-    font-size: larger;
     text-align: center;
     cursor: pointer;
 }
@@ -163,8 +162,6 @@
 }
 
 .select__type {
-    width: 50%;
-    max-width: 200px;
     border-radius: 50px;
     position: relative;
 }
@@ -335,7 +332,7 @@
 /* White back */
 
 .background-white {
-    background-color: #FFFFFF;
+    background-color: #ffffffd9;
     width: 90%;
     max-width: 500px;
     margin: auto;
@@ -587,7 +584,7 @@
 }
 
 .type-button {
-    width: 100%;
+    width: 50%;
     max-width: 200px;
     border: #343232 solid 0.1rem;
     border-radius: 50px;
@@ -600,7 +597,7 @@
     position: absolute;
     background-color: aliceblue;
     list-style: none;
-    width: 100%;
+    width: 50%;
     text-align: center;
     border:#767676 solid 1px;
     flex-direction: column;
@@ -802,4 +799,15 @@
 
 .testNow {
     background-color: #000000;
+}
+
+.select__typev2 {
+    max-width: 200px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.ul2 { 
+    top: 100%;
+    width: 100%;
 }
