@@ -1,12 +1,12 @@
 import express from 'express'
 import path from 'path'
 import {fileURLToPath} from 'url';
-import homeRoute from './Routes/Home.js'
-import pokedexRoute from './Routes/Pokedex.js'
-import PokemonRoute from './Routes/Pokemon.js'
-import PokeAddRoute from './Routes/pokeAdd.js'
-import TypesRoute from './Routes/Types.js'
-import FavRoute from './Routes/Fav.js'
+import homeRoute from './Routes/Home'
+import pokedexRoute from './Routes/Pokedex'
+import PokemonRoute from './Routes/Pokemon'
+import PokeAddRoute from './Routes/pokeAdd'
+import TypesRoute from './Routes/Types'
+import FavRoute from './Routes/Fav'
 const __filename = fileURLToPath(import.meta.url),
     __dirname = path.dirname(__filename),
     app = express(),
