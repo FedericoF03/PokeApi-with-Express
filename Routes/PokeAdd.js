@@ -2,9 +2,9 @@ import express  from "express";
 import { DetailController, PokemonController } from "../Controllers/PokemonControllers.js";
 import geType from '../Model/TypesController.js';
 import fetch from 'node-fetch';
-const Route = express.Router();
+const Router = express.Router();
 
-Route 
+Router 
     .get('/PokemonAdd', async (req, res) => {
         let locals = { types: await geType() }
         res.render('Add', locals)
@@ -44,4 +44,4 @@ Route
         }                   
     });
 
-export default Route
+export default Router
