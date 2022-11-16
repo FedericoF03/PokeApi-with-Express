@@ -11,7 +11,7 @@ $MODAL = document.getElementById('modal'),
 $backgroundDinamic = document.querySelector('.background-dinamic'),
 $backgroundDataDinamic = document.querySelectorAll('.background-data--dinamic'),
 $type = document.querySelectorAll('.types')[0],
-$srcRemove = [`${location.hostname}/Public/Assets/`, '.png'],
+$srcRemove = [`/Public/Assets/`, '.png'],
 $typeNow = $type.src.split($srcRemove[0]).join('').split($srcRemove[1]).join(''),
 colors = {
     pink: {
