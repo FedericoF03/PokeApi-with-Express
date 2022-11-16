@@ -31,7 +31,7 @@ const fav = () => {
 }
 fav()
 if(location.pathname === '/Fav') {
-    $fava.href = '/Pokedex'
+    $fava.href = location.hostname + '/Pokedex'
     
 }
 
