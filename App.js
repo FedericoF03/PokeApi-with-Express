@@ -18,7 +18,7 @@ app
     .set('views', path.join(__dirname, 'Public', 'views'))
     // .set('trust proxy', true)
     // .use(morgan('dev'))
-    .use(favicon(path.join(__dirname, 'Public', 'Assets', 'icon.ico'))
+    .use(favicon(path.join(__dirname, 'Public', 'Assets', 'icon.ico')))
     .use(homeRoute)
     .use(TypesRoute)
     .use(pokedexRoute)
