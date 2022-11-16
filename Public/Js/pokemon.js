@@ -144,6 +144,8 @@ types = {
     electric: 'electric'
 }
 
+console.log($type)
+
 const ChangeColor = (colors) => {
     $backgroundDinamic.style.backgroundColor = colors.strong
     $MODAL.style.backgroundColor = colors.transparent
