@@ -5,7 +5,7 @@ let $SELECTMODE = document.getElementById('selectMode'),
 document.addEventListener('change', e => {
     if (e.target === $SELECTMODE) {
         if(location.pathname.match('/Pokemon')) location.href = `${location.hostname}/pokedex?mode=${e.target.value}`
-        else location.href = `${location.hostname + location.pathname}?mode=${e.target.value}`;
+        else location.href = `${location.pathname}?mode=${e.target.value}`;
     }
 })
 document.addEventListener('click', e => {
