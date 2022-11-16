@@ -144,7 +144,7 @@ types = {
     electric: 'electric'
 }
 
-console.log($type)
+console.log($type, $typeNow)
 
 const ChangeColor = (colors) => {
     $backgroundDinamic.style.backgroundColor = colors.strong
