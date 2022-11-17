@@ -2,149 +2,148 @@ import header from './header.js'
 import arrow from './arrow.js'
 
 let kids = document.getElementById('stats').children,
-$FAVINPUT = document.getElementById('fav'),
-$IMGPOKE = document.getElementById('imgPoke'),
-$IMGSHINY = document.getElementById('imgShiny'),
-$shiny = document.getElementById('shiny'),
-$MODALDISPLAY = document.getElementById('info'),
-$MODAL = document.getElementById('modal'),
-$backgroundDinamic = document.querySelector('.background-dinamic'),
-$backgroundDataDinamic = document.querySelectorAll('.background-data--dinamic'),
-$type = document.querySelectorAll('.types')[0],
-$srcRemove = [`https://pokeapi-with-express-production.up.railway.app/Public/Assets/`, '.png'],
-$typeNow = $type.src.split($srcRemove[0]).join('').split($srcRemove[1]).join(''),
-colors = {
-    pink: {
-        strong:'#75525C',
-        soft:'#CA98A6',
-        transparent: '#4b383dd1',
-        light: '#cd6aa5'
+    father = document.getElementById('stats'),
+    $FAVINPUT = document.getElementById('fav'),
+    $IMGPOKE = document.getElementById('imgPoke'),
+    $IMGSHINY = document.getElementById('imgShiny'),
+    $shiny = document.getElementById('shiny'),
+    $MODALDISPLAY = document.getElementById('info'),
+    $MODAL = document.getElementById('modal'),
+    $backgroundDinamic = document.querySelector('#backgroundDinamic'),
+    $backgroundDataDinamic = document.querySelectorAll('#backDataDinamic'),
+    $type = document.querySelectorAll('.types')[0],
+    $srcRemove = [`https://pokeapi-with-express-production.up.railway.app/Public/Assets/`, '.png'],
+    $typeNow = $type.src.split($srcRemove[0]).join('').split($srcRemove[1]).join(''),
+    colors = {
+        pink: {
+            strong:'#75525C',
+            soft:'#CA98A6',
+            transparent: '#4b383dd1',
+            light: '#cd6aa5'
+        },
+        orange: {
+            strong:'#994025',
+            soft:'#EF6239',
+            transparent: '#271d14cc',
+            light: '#cd8d32'
+        },
+        blueSoft: {
+            strong:'#4A677D',
+            soft:'#94B2C7',
+            transparent: '#0f1a3fc9',
+            light: '#6a95cd'
+        },
+        purple: {
+            strong:'#5E2D89',
+            soft:'#9B69DA',
+            transparent: '#260f3fc9',
+            light: '#956acd'
+        },
+        brownSoft: {
+            strong:'#6E491F',
+            soft:'#A8702D',
+            transparent: '#3f2e0fc9',
+            light: '#cda96a'
+        },
+        brown: {
+            strong:'#48190B',
+            soft:'#8B3E22',
+            transparent: '#3f180fc9',
+            light: '#cd7c6a'
+        },
+        greenDark: {
+            strong:'#1C4B27',
+            soft:'#3C9950',
+            transparent: '#0f3f15c9',
+            light: '#72cd6a'
+        },
+        blueDark: {
+            strong:'#33336B',
+            soft:'#906791',
+            transparent: '#180f3fc9',
+            light: '#af6acd'
+        },
+        grey: {
+            strong:'#60756E',
+            soft:'#43BD94',
+            transparent: '#404040c9',
+            light: '#6acda4'
+        },
+        red: {
+            strong:'#AB1F24',
+            soft:'#FD4B5A',
+            transparent: '#271414cc',
+            light: '#cd6a6a'
+        },
+        blue: {
+            strong:'#1552E1',
+            soft:'#85A8FB',
+            transparent: '#141627cc',
+            light: '#6a75cd'
+        },
+        green: {
+            strong:'#157F3E',
+            soft:'#27CB50',
+            transparent: '#1a2714cc',
+            light: '#8bcd6a'
+        },
+        yellow: {
+            strong:'#E2E32B',
+            soft:'#FAFA72',
+            transparent: '#272614cc',
+            light: '#cdcd6a'
+        },
+        pinkSoft: {
+            strong:'#A52A6C',
+            soft:'#F71D92',
+            transparent: '#251427cc',
+            light: '#cd6ac3'
+        },
+        lightBlue: {
+            strong:'#86D2F5',
+            soft:'#D8F0FA',
+            transparent: '#142327cc',
+            light: '#6ac3cd'
+        },
+        lightBlueHard: {
+            strong:'#448A95',
+            soft:'#62CAD9',
+            transparent: '#142227cc',
+            light: '#6aafcd'
+        },
+        dark: {
+            strong:'#040707',
+            soft:'#595978',
+            transparent: '#010303cc',
+            light: '#6d6acd'
+        },
+        pinkHard: {
+            strong:'#961A45',
+            soft:'#E91368',
+            transparent: '#271419cc',
+            light: '#cd6a86'
+        }
     },
-    orange: {
-        strong:'#994025',
-        soft:'#EF6239',
-        transparent: '#271d14cc',
-        light: '#cd8d32'
-    },
-    blueSoft: {
-        strong:'#4A677D',
-        soft:'#94B2C7',
-        transparent: '#0f1a3fc9',
-        light: '#6a95cd'
-    },
-    purple: {
-        strong:'#5E2D89',
-        soft:'#9B69DA',
-        transparent: '#260f3fc9',
-        light: '#956acd'
-    },
-    brownSoft: {
-        strong:'#6E491F',
-        soft:'#A8702D',
-        transparent: '#3f2e0fc9',
-        light: '#cda96a'
-    },
-    brown: {
-        strong:'#48190B',
-        soft:'#8B3E22',
-        transparent: '#3f180fc9',
-        light: '#cd7c6a'
-    },
-    greenDark: {
-        strong:'#1C4B27',
-        soft:'#3C9950',
-        transparent: '#0f3f15c9',
-        light: '#72cd6a'
-    },
-    blueDark: {
-        strong:'#33336B',
-        soft:'#906791',
-        transparent: '#180f3fc9',
-        light: '#af6acd'
-    },
-    grey: {
-        strong:'#60756E',
-        soft:'#43BD94',
-        transparent: '#404040c9',
-        light: '#6acda4'
-    },
-    red: {
-        strong:'#AB1F24',
-        soft:'#FD4B5A',
-        transparent: '#271414cc',
-        light: '#cd6a6a'
-    },
-    blue: {
-        strong:'#1552E1',
-        soft:'#85A8FB',
-        transparent: '#141627cc',
-        light: '#6a75cd'
-    },
-    green: {
-        strong:'#157F3E',
-        soft:'#27CB50',
-        transparent: '#1a2714cc',
-        light: '#8bcd6a'
-    },
-    yellow: {
-        strong:'#E2E32B',
-        soft:'#FAFA72',
-        transparent: '#272614cc',
-        light: '#cdcd6a'
-    },
-    pinkSoft: {
-        strong:'#A52A6C',
-        soft:'#F71D92',
-        transparent: '#251427cc',
-        light: '#cd6ac3'
-    },
-    lightBlue: {
-        strong:'#86D2F5',
-        soft:'#D8F0FA',
-        transparent: '#142327cc',
-        light: '#6ac3cd'
-    },
-    lightBlueHard: {
-        strong:'#448A95',
-        soft:'#62CAD9',
-        transparent: '#142227cc',
-        light: '#6aafcd'
-    },
-    dark: {
-        strong:'#040707',
-        soft:'#595978',
-        transparent: '#010303cc',
-        light: '#6d6acd'
-    },
-    pinkHard: {
-        strong:'#961A45',
-        soft:'#E91368',
-        transparent: '#271419cc',
-        light: '#cd6a86'
+    types = {
+        normal: 'normal',
+        fighting: 'fighting',
+        flying: 'flying',
+        poison: 'poison',
+        ground: 'ground',
+        rock: 'rock',
+        bug: 'bug',
+        ghost: 'ghost',
+        steel: 'steel',
+        fire: 'fire',
+        water: 'water',
+        grass: 'grass',
+        psychic: 'psychic',
+        ice: 'ice',
+        dragon: 'dragon',
+        fairy: 'fairy',
+        dark: 'dark',
+        electric: 'electric'
     }
-},
-types = {
-    normal: 'normal',
-    fighting: 'fighting',
-    flying: 'flying',
-    poison: 'poison',
-    ground: 'ground',
-    rock: 'rock',
-    bug: 'bug',
-    ghost: 'ghost',
-    steel: 'steel',
-    fire: 'fire',
-    water: 'water',
-    grass: 'grass',
-    psychic: 'psychic',
-    ice: 'ice',
-    dragon: 'dragon',
-    fairy: 'fairy',
-    dark: 'dark',
-    electric: 'electric'
-}
-
-console.log($type, $typeNow)
 
 const ChangeColor = (colors) => {
     $backgroundDinamic.style.backgroundColor = colors.strong
@@ -172,10 +171,7 @@ else if($typeNow ===  types.dragon) ChangeColor(colors.lightBlueHard)
 else if($typeNow ===  types.fairy) ChangeColor(colors.pinkHard)
 else ChangeColor(colors.dark)
 
-for (let kid of kids) {
-    let number = kid.textContent.split(' ')
-    kid.children[0].style.width = `${(parseInt(number[1]) / 255) * (100) }%`
-}
+
 
 document.addEventListener('click', (e) => {
     if(e.target.id === $FAVINPUT.id ) {
@@ -212,7 +208,16 @@ document.addEventListener('click', (e) => {
     }
 })
 
-
+const observer = new IntersectionObserver( (entries) => {
+   if (entries[0].isIntersecting) {
+        for (let kid of kids) {
+            let number = kid.textContent.split(' ')
+            kid.children[0].style.width = `${(parseInt(number[1]) / 255) * (100) }%`
+        }
+    }
+    
+} )
+observer.observe(father)
 
 
 

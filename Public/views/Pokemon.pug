@@ -3,7 +3,7 @@ extends header.pug
 block content 
     div.conteiner#conteiner
         div.background-white.flex 
-            div.background.flex.background-dinamic
+            div.background.flex#backgroundDinamic
                 div.conteiner-pokemon.flex
                     p.box-poke__name-poke.box-poke__name-poke--margin#namePoke= `${locals.pokemonData.name} / N°${locals.pokemonData.id}`
                     div.conteiner-pokemon__box-pokemon.flex
@@ -36,17 +36,17 @@ block content
                                 img(src="/Public/Assets/M.png").size50 
                                 p M
                 p.pokemon-data  data
-                div.background-data.background-data--dinamic 
+                div.background-data#backDataDinamic 
                     p Height 
                     p= locals.pokemonData.height
                     p weight
                     p= locals.pokemonData.weight
                 p.pokemon-data Types 
-                div.background-data.background-data--dinamic
+                div.background-data#backDataDinamic
                     each value in locals.pokemonData.types
                         img(src=`/Public/Assets/${typeof value.type !== 'undefined'? value.type.name : value._type.name}.png` alt="").types
                 p.pokemon-data  Abilities 
-                div.background-data.background-data--dinamic
+                div.background-data#backDataDinamic
                     each value in locals.pokemonData.abilities 
                         if value.is_hidden 
                             div.flex
@@ -58,14 +58,14 @@ block content
                                 p.ability-p= value.ability.name
                 if locals.pokemonData.moves !== null
                     p.pokemon-data Moves
-                    div.moves-data.background-data--dinamic.flex 
+                    div.moves-data#backDataDinamic.flex 
                         each value in locals.pokemonData.moves
                             p= value.move.name
                 if (locals.pokemonData.varierities.length > 1)            
                     p.pokemon-data Method encounter / Varierities
                 else 
                     p.pokemon-data Method encounter
-                div.background-data.background-data--dinamic 
+                div.background-data#backDataDinamic 
                     if locals.pokemonData.habitat !== null
                         div.flex
                             p.ability-p Habitat
@@ -77,9 +77,12 @@ block content
                     div.flex
                         p.ability-pv2 Varierities 
                         div.conteiner-varierities.flex
-                            each value in locals.pokemonData.varierities
-                                if locals.pokemonData.name !== value.pokemon.name
-                                    a(href=`${value.pokemon.name}`).ability-pv2.var= value.pokemon.name
+                            if (locals.pokemonData.varierities > 0)
+                                each value in locals.pokemonData.varierities
+                                    if locals.pokemonData.name !== value.pokemon.name
+                                        a(href=`${value.pokemon.name}`).ability-pv2.var= value.pokemon.name
+                            else 
+                                p.ability-pv2.var= '???'
             p.title Stat
             div.box-stat.flex#stats
                 each value in locals.pokemonData.stats

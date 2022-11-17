@@ -90,6 +90,8 @@
     padding: 2px 3px;
 }
 
+.search__input-search:focus-visible { outline: none; }
+
 .search__input-button {
     border: none;
     width: 20px;
@@ -100,6 +102,10 @@
     box-sizing: content-box;
     cursor: pointer;
 }
+
+.search__input-button:hover { background-color:  #7f2323; }
+
+
 
 .conteiner-mode {
     background-color: #FF3030;
@@ -352,10 +358,6 @@
     padding-bottom: 1rem;
 }
 
-.background-dinamic {
-    background-color: #9aef58;
-}
-
 .conteiner-pokemon {
     max-width: 300px;
     margin: auto;
@@ -382,9 +384,10 @@
 }
 
 .modal-text {
-    background-color: yellowgreen;
-    padding: 15px 0px;
+    padding: 30px 20px;
+    margin: 5px;
     border-radius: 50px;
+    box-sizing: border-box;
 }
 
 .fav-button {
@@ -434,10 +437,6 @@
     padding: 0.5rem;
 }
 
-.background-data--dinamic {
-    background-color: #008000;
-}
-
 .moves-data {
     width: 90%;
     max-width: 330px;
@@ -469,7 +468,11 @@
     overflow-y: auto;
 }
 
-.title { text-align: center; }
+.title { 
+    text-align: center;
+    margin: 15px 0;
+    font-family: 'Press Start 2P', 'Exo 2', Roboto, sans-serif, 'Open Sans', 'Helvetica Neue';
+}
 
 .box-stat {
     flex-direction: column;
@@ -484,7 +487,7 @@
 
 .bar-front {
     width: 0%;
-    transition: width 1s;
+    transition: width 2.5s;
     height: 20px;
     border-radius: inherit;
 }
@@ -538,8 +541,9 @@
     max-width: 50px;
     position: fixed;
     bottom: 15vh;
-    right: 0;
-    display: none;
+    right: 5px;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: 0.1s clip-path;
     cursor: pointer;
 }
 
@@ -549,7 +553,7 @@
     max-width: 80px;
 }
 
-.box-evolution__evolution-link{
+.box-evolution__evolution-link {
     color: #000000;
     border: 1px solid #000000;
     outline: #000000 solid 1px;
@@ -558,6 +562,10 @@
     font-size: 1rem;
     font-family: 'Press Start 2P', 'Exo 2', Roboto, sans-serif, 'Open Sans', 'Helvetica Neue';
     margin: 20px;
+}
+
+.box-evolution__evolution-link:hover {
+    background-color: #ffffff;
 }
 
 .form {

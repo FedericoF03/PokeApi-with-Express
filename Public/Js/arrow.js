@@ -3,6 +3,6 @@ $CONT = document.getElementById('conteiner')
 document.addEventListener('click', (e) => {
     if (e.target === $ARROW) $CONT.scrollTop = 0;
 })
-$CONT.addEventListener('scroll', () => $CONT.scrollTop > 500 ? $ARROW.style.display = 'block' : $ARROW.style.display = 'none');
+$CONT.addEventListener('scroll', () => $CONT.scrollTop > 500 ? $ARROW.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : $ARROW.style.clipPath = 'polygon(0 0, 100% 0, 100% 0, 0 0)');
 
 export default './arrow.js'

@@ -16,8 +16,6 @@ const __filename = fileURLToPath(import.meta.url),
 app
     .set('view engine', 'pug')
     .set('views', path.join(__dirname, 'Public', 'views'))
-    // .set('trust proxy', true)
-    // .use(morgan('dev'))
     .use(favicon(path.join(__dirname, 'Public', 'Assets', 'icon.ico')))
     .use(homeRoute)
     .use(TypesRoute)
