@@ -10,7 +10,12 @@ Router
         if (pokemonData === null) {
             let evolutionList = [],
                 pokemon = await PokemonController.findOneController(req.params.poke);
-            if(pokemon === null) return res.render('notFound');
+            if(pokemon === null) { 
+                let locals = {
+                    pokemonData: req.params.poke
+                }
+                return res.render('notFound', locals); 
+            }
             let detail = await DetailController.findOneController(req.params.poke),   
                 locals = {
                     pokemonData: {

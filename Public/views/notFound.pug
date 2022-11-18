@@ -2,5 +2,6 @@ extends header.pug
 
 block content
     div.conteiner#conteiner
-            a(href="/Pokedex") Pokemon no coincidente
+            p.box-poke__name-poke.center= `there is no pokemon: `
+                a(href="/Pokedex")=`${locals.pokemonData}`
     include footer.pug

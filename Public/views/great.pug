@@ -2,8 +2,8 @@ extends header.pug
 
 block content
     div.conteiner#conteiner
-        p.form.flex Su pokemon fue añadido con exito 
-            a(href="/Pokedex") volver
-            a(href="/PokemonAdd") Agregar otro
+        p.form.flex= `The pokemon with the name '${locals.pokemon.name}' was added successfully`
+            a(href="/Pokedex").testing__go-Pokedex Go to Pokedex
+            a(href="/PokemonAdd").testing__go-Pokedex.testing__go-request add another
             
     include footer.pug

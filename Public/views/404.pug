@@ -2,7 +2,14 @@ extends header.pug
 
 block content
     div.conteiner#conteiner
-        p.form.flex= `Error de codigo: ${locals.code} ${locals.message} llave afectada ${locals.keyValue}` 
-            a(href="/PokemonAdd") Volver a hacer una peticion 
+        div.form.flex.testing-wrap  
+            p.field-p Code Error:
+                span.field-span= `${locals.code}`
+            p.field-p Message error:
+                span.field-span= `${locals.message}`
+            p.field-p affected field:
+                span.field-span= `${locals.keyValue}`
+            a(href="/Pokedex").testing__go-Pokedex Go to Pokedex
+            a(href="/PokemonAdd").testing__go-Pokedex.testing__go-request Redo a request
             script(type="module" src="/Public/Js/Listeners.js") 
     include footer.pug

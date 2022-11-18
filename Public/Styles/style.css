@@ -819,3 +819,41 @@
     top: 100%;
     width: 100%;
 }
+
+
+.testing-wrap {
+    flex-wrap: wrap;
+}
+
+
+.field-p {
+ color: #ffffff;
+}
+
+.field-span {
+    color: #000000;
+}
+
+.testing__go-Pokedex {
+    color: white;
+    background-color: black;
+    padding: 0.5rem;
+    margin: 5px 3px;
+}
+
+.testing__go-request { background-color: #198200; }
+
+.fon-small {
+    font-size: 1rem;
+}
+
+
+.testing {
+    color: #FFFFFF;
+    background-color: #050505da;
+    padding: 0.2rem 0.4rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+}
