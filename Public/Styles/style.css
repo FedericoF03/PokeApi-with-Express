@@ -863,3 +863,17 @@ input::-webkit-inner-spin-button {
     appearance: none;
     margin: 0;
 }
+
+.home-title-effect {
+    z-index: 99;
+    filter: brightness(1.5);
+    animation-name: bright;
+    animation-duration: 1.2s;
+    clip-path: polygon(10% 0, 20% 0, 10% 100%, 0 100%);
+    animation-iteration-count: infinite;
+}
+
+@keyframes bright {
+    0% {clip-path: polygon(10% 0, 20% 1%, 12% 100%, 0 100%);}
+    100%{clip-path: polygon(140% 0, 150% 0, 120% 100%, 100% 100%);}
+}
