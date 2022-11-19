@@ -10,6 +10,7 @@ const $form = document.getElementById("form"),
     $list = document.getElementById('list'),
     $menu = document.getElementById('select'),
     $varieritiesInput = document.getElementById('varieritiesButton'),
+    $addIcon = document.getElementById('iconAdd'),
     arrowLimits = [1, 11];
    
 let count = 1;
@@ -143,3 +144,5 @@ document.addEventListener('click', e => {
     }
    
 })
+
+if (location.pathname === '/PokemonAdd') $addIcon.parentElement.pathname =  '/Pokedex';

@@ -32,7 +32,7 @@ const fav = () => {
 }
 
 fav();
-if (location.pathname === '/Fav') $favAnchor.href = location.hostname + '/Pokedex';
+if (location.pathname === '/Fav') $favAnchor.pathname =  '/Pokedex';
 
 document.addEventListener('click', e => {
     if(e.target.id === $icon.id) {

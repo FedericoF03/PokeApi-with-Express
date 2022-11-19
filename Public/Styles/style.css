@@ -163,7 +163,7 @@
 
 .types__box {
     flex-direction: column;
-    margin-top: 5px;
+    margin: 5px 5px;
     width: 50%;
     max-width: 350px;
 }
@@ -178,6 +178,7 @@
     max-width: 200px;
     border-radius: 15px;
     margin-left: 50%;
+    border: none;
     cursor: pointer;
 }
 
@@ -368,6 +369,7 @@
 
 .conteiner-pokemon__box-pokemon {
     align-items: center;
+    gap: 15px;
     width: 90%;
     position: relative;
 }
@@ -586,10 +588,6 @@
 
 .add-button {
     max-width: 50px;
-}
-
-.option {
-  
 }
 
 .type-button {
