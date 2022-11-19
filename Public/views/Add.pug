@@ -20,23 +20,23 @@ block content
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon attack*")#attack.text-form
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon defense*")#defense.text-form
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Attack*")#specialAttack.text-form
-                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Defense*")#specialDefense.text-form
+                    input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Def*")#specialDefense.text-form
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon speed*")#speed.text-form
                 div(hidden).center
-                    input(type="hidden" name="types").abilitiesform#type1
-                    input(type="hidden" name="types").abilitiesform#type2
                     div.select__typev2.flex
-                        div.flex.type-button
-                            button.buttontest#selectType1 Types
-                            img(src="/Public/Assets/arrow-type.png", alt="arrow").test2arrow#imgArrow
-                            ul.ul.ul2.nones#menu
+                        div.flex.type-button#select
+                            button.buttontest Types*
+                            input(type="hidden" name="types").abilitiesform#type
+                            img(src="/Public/Assets/arrow-type.png", alt="arrow").test2arrow
+                            ul.ul.ul2.nones#list
                                 each types in locals.types.results
                                     if (types.name !== 'unknown' && types.name !== 'shadow')
                                         li.option= types.name
-                        div.flex.type-button
-                            button.buttontest#selectType2 Types
-                            img(src="/Public/Assets/arrow-type.png", alt="arrow").test2arrow#imgArrow2
-                            ul.ul.ul2.nones#menu2
+                        div.flex.type-button#select
+                            button.buttontest Types
+                            input(type="hidden" name="types").abilitiesform
+                            img(src="/Public/Assets/arrow-type.png", alt="arrow").test2arrow
+                            ul.ul.ul2.nones#list
                                 each types in locals.types.results
                                     if types.name !== 'unknown' && types.name !== 'shadow'
                                         li.option= types.name

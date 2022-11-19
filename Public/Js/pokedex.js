@@ -1,62 +1,60 @@
 import header from './header.js'
 import arrow from './arrow.js'
-const $HIDDENORDER = document.getElementById('hiddenOrder'),
 
-$HIDDENLIMIT = document.getElementById('hiddenLimit'),
-$HIDDENOFFSET = document.getElementById('hiddenOffset'),
-$SELECTORDER = document.getElementById('selectOrder'),
-$SELECTTYPE = document.getElementById('selectType'),
-$MENU = document.getElementById('menu'),
-$FORM = document.getElementById('createForm'),
-$ARROWTYPE = document.getElementById('imgArrow'),
-$LINK = document.getElementById('link'),
-$typos = document.querySelectorAll('#typesH')
+const $hiddenOrder = document.getElementById('hiddenOrder'),
+$hiddenLimit = document.getElementById('hiddenLimit'),
+$hiddenOffset = document.getElementById('hiddenOffset'),
+$selectOrder = document.getElementById('selectOrder'),
+$selectType = document.getElementById('selectType'),
+$menu = document.getElementById('menu'),
+$form = document.getElementById('createForm'),
+$arrowType = document.getElementById('imgArrow'),
+$link = document.getElementById('link'),
+$types = document.querySelectorAll('#typesH');
 
 document.addEventListener('click', e => {
 
     if(e.target.id === 'inputLimit') {
-        $HIDDENLIMIT.value = e.target.textContent;
-        $HIDDENOFFSET.value = 0;
-        $FORM.submit();
+        $hiddenLimit.value = e.target.textContent;
+        $hiddenOffset.value = 0;
+        $form.submit();
     }
 
     if (e.target.id === 'pag') {
-        $HIDDENOFFSET.value = e.target.value;
-        $FORM.submit();
+        $hiddenOffset.value = e.target.value;
+        $form.submit();
     }   
 
-    if ($ARROWTYPE.classList.contains('sus')) {
-        $MENU.classList.add('nones')
-        $MENU.classList.remove('flex')
-        $ARROWTYPE.classList.remove('sus')
+    if ($arrowType.classList.contains('sus')) {
+        $menu.classList.add('nones')
+        $menu.classList.remove('flex')
+        $arrowType.classList.remove('sus')
     }
-    if (e.target === $SELECTTYPE) {
-        if($MENU.classList.contains('nones')) {
-            $MENU.classList.toggle('flex')
-            $MENU.classList.toggle('nones')
-        } else if ($MENU.classList.contains('flex')) {
-            $MENU.classList.toggle('flex')
-            $MENU.classList.toggle('nones')
+    if (e.target === $selectType) {
+        if($menu.classList.contains('nones')) {
+            $menu.classList.toggle('flex')
+            $menu.classList.toggle('nones')
+        } else if ($menu.classList.contains('flex')) {
+            $menu.classList.toggle('flex')
+            $menu.classList.toggle('nones')
         }   
-        $ARROWTYPE.classList.toggle('sus')
+        $arrowType.classList.toggle('sus')
     }
 
     if (e.target.id === 'pag') {
-        $HIDDENOFFSET.value = e.target.value;
-        $FORM.submit();
+        $hiddenOffset.value = e.target.value;
+        $form.submit();
     }   
     
 })
 
 document.addEventListener('change', e => {
-    if (e.target === $SELECTORDER) {
-        $HIDDENORDER.value = e.target.value;
-        $FORM.submit();
+    if (e.target === $selectOrder) {
+        $hiddenOrder.value = e.target.value;
+        $form.submit();
     }  
 })
 
-if (location.pathname.match('/Pokedex')) $LINK.href = '/';
+if (location.pathname.match('/Pokedex')) $link.href = '/';
 
-$typos.forEach(element => {
-    element.href = element.href + location.search
-})
+$types.forEach(element => element.href = element.href + location.search)

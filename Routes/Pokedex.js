@@ -34,7 +34,7 @@ Router
                   pokemons.pokemonsList = pokemonsDb.result;
                   count = pokemonsDb.count;
                } else {
-                  res.render('null')
+                  return res.render('null')
                }
                
             }      

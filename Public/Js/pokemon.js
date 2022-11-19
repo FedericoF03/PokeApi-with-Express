@@ -3,12 +3,12 @@ import arrow from './arrow.js'
 
 let kids = document.getElementById('stats').children,
     father = document.getElementById('stats'),
-    $FAVINPUT = document.getElementById('fav'),
-    $IMGPOKE = document.getElementById('imgPoke'),
-    $IMGSHINY = document.getElementById('imgShiny'),
+    $favInput = document.getElementById('fav'),
+    $imagePoke = document.getElementById('imgPoke'),
+    $imageShiny = document.getElementById('imgShiny'),
     $shiny = document.getElementById('shiny'),
-    $MODALDISPLAY = document.getElementById('info'),
-    $MODAL = document.getElementById('modal'),
+    $modalDisplay = document.getElementById('info'),
+    $modal = document.getElementById('modal'),
     $backgroundDinamic = document.querySelector('#backgroundDinamic'),
     $backgroundDataDinamic = document.querySelectorAll('#backDataDinamic'),
     $type = document.querySelectorAll('.types')[0],
@@ -146,10 +146,10 @@ let kids = document.getElementById('stats').children,
     }
 
 const ChangeColor = (colors) => {
-    $backgroundDinamic.style.backgroundColor = colors.strong
-    $MODAL.style.backgroundColor = colors.transparent
-    $MODALDISPLAY.style.backgroundColor = colors.light
-    $backgroundDataDinamic.forEach(element => element.style.backgroundColor = colors.soft)
+    $backgroundDinamic.style.backgroundColor = colors.strong;
+    $modal.style.backgroundColor = colors.transparent;
+    $modalDisplay.style.backgroundColor = colors.light;
+    $backgroundDataDinamic.forEach(element => element.style.backgroundColor = colors.soft);
 }
 
 if($typeNow ===  types.normal) ChangeColor(colors.pink)
@@ -174,12 +174,12 @@ else ChangeColor(colors.dark)
 
 
 document.addEventListener('click', (e) => {
-    if(e.target.id === $FAVINPUT.id ) {
+    if(e.target.id === $favInput.id ) {
         let nameToSave = document.getElementById('namePoke').textContent;
         nameToSave = nameToSave.split('/');
         let id = nameToSave[1].split('N°'),
             arrayPoke = [],
-            pokemon = { name : nameToSave[0], id : id[1], img: $IMGPOKE.src }
+            pokemon = { name : nameToSave[0], id : id[1], img: $imagePoke.src }
         if (localStorage.getItem('fav') !== null) {
             let poke = JSON.parse(localStorage.getItem('fav'));
             if (poke.filter(element => element.name === nameToSave[0] ).length > 0) {
@@ -195,16 +195,16 @@ document.addEventListener('click', (e) => {
     }
 
     if (e.target.id === $shiny.id ) {
-        if ($IMGPOKE.hasAttribute('hidden')) $IMGPOKE.removeAttribute('hidden')
-        else  $IMGPOKE.setAttribute('hidden','hidden')
-        if ($IMGSHINY.hasAttribute('hidden')) $IMGSHINY.removeAttribute('hidden')
-        else  $IMGSHINY.setAttribute('hidden','hidden')    
+        if ($imagePoke.hasAttribute('hidden')) $imagePoke.removeAttribute('hidden')
+        else  $imagePoke.setAttribute('hidden','hidden')
+        if ($imageShiny.hasAttribute('hidden')) $imageShiny.removeAttribute('hidden')
+        else  $imageShiny.setAttribute('hidden','hidden')    
     }
    
-    if(e.target.id === $MODALDISPLAY.id || e.target.id === $MODAL.id ) {
-        $MODALDISPLAY.classList.toggle('nones')
-        $MODAL.classList.toggle('nones')
-        $MODAL.classList.toggle('flex')
+    if(e.target.id === $modalDisplay.id || e.target.id === $modal.id ) {
+        $modalDisplay.classList.toggle('nones')
+        $modal.classList.toggle('nones')
+        $modal.classList.toggle('flex')
     }
 })
 
