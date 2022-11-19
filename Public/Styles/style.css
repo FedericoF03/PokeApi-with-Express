@@ -163,6 +163,7 @@
 
 .types__box {
     flex-direction: column;
+    margin-top: 5px;
     width: 50%;
     max-width: 350px;
 }

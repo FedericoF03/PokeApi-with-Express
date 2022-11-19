@@ -7,9 +7,9 @@ const Router = express.Router();
 Router
       .get('/Pokedex', async (req, res) => {
          let types = await geType(),
-         pokemons = {},
-         pokemonsDb,
-         count;
+            pokemons = {},
+            pokemonsDb,
+            count;
 
          if(req.query.mode !== 'db') {
             pokemons = await PokeApiController.getAllPokeApiController(req.query.offset, req.query.limit),

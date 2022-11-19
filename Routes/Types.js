@@ -32,7 +32,7 @@ Router
                   count = pokemonsDb.count
                }
                else {
-                  res.render('null')
+                  return res.render('null')
                }
             }      
          }

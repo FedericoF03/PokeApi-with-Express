@@ -13,9 +13,9 @@ Router
     .post('/PokemonAdd', async (req, res) => {
        let getCountApi = await fetch('https://pokeapi.co/api/v2/pokemon?limit=0&offset=0'),
             resCountApi = await getCountApi.json(),
-            getTLP = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=0&offset=${resCountApi.count - 1}`),
-            resTLP = await getTLP.json(),
-            getCount = await fetch(resTLP.results[0].url),
+            getTheLastPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=0&offset=${resCountApi.count - 1}`),
+            resTheLastPokemon = await getTheLastPokemon.json(),
+            getCount = await fetch(resTheLastPokemon.results[0].url),
             resCount = await getCount.json(),
             countDb = await PokemonController.countController(),
             count = countDb + parseInt(resCount.id),
@@ -34,13 +34,12 @@ Router
                 message: 'Error for duplicate key'
             }
             if(error.code === 11000) return res.render('404', locals)    
-            return res.render('404', locals) 
         } finally {
             let locals = {
                 pokemon,
                 detail
             }
-            res.render('great', locals)
+        return res.render('great', locals)
         }                   
     });
 

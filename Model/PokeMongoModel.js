@@ -86,7 +86,10 @@ export class PokemonModel{
             pokemon.id_chain = form.evoChainName
                 .filter( name => name.trim() !== '')
                 .map( element => obj = { name: element });
-        } else pokemon.id_chain.push({ name: form.evoChainName });  
+        } else {
+            if (name.trim() !== '') pokemon.id_chain.push({ name: form.evoChainName });  
+            else pokemon.id_chain.push(null);
+        }
 
         const result = await pokemon.save();
         return result

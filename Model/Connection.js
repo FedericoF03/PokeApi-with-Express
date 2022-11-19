@@ -1,7 +1,7 @@
 import mongoose  from 'mongoose';
 import dotenv from 'dotenv/config.js';
 try {
-    let connection = await mongoose.connect('mongodb+srv://Marlon:Gk8dr3RXhbS7b8ft@pokemongo.etftzof.mongodb.net/?retryWrites=true&w=majority', {
+    let connection = await mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }); 

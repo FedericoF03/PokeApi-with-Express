@@ -26,6 +26,4 @@ app
     
     
     .use(express.static(path.join(__dirname, '/')))
-app.listen(port, () => {
-    console.log(`run in the port ${port}`)
-})
+app.listen(port, () => console.log(`run in the port ${port}`) )
