@@ -1,12 +1,12 @@
 import header from './header.js'
 import arrow from './arrow.js'
+import fav from './FavIcon.js'
 
 let kids = document.getElementById('stats').children,
     father = document.getElementById('stats'),
     $favInput = document.getElementById('fav'),
     $imagePoke = document.getElementById('imgPoke'),
     $imageShiny = document.getElementById('imgShiny'),
-    $conteiner = document.getElementById('conteiner'),
     $shiny = document.getElementById('shiny'),
     $modalDisplay = document.getElementById('info'),
     $modal = document.getElementById('modal'),
@@ -174,41 +174,9 @@ else ChangeColor(colors.dark)
 
 document.addEventListener('click', (e) => {
     if(e.target.id === $favInput.id ) {
-        let nameToSave = document.getElementById('namePoke').textContent,
-            text = document.createElement('p')
-            nameToSave = nameToSave.split('/');
-            text.classList.add('fav')
-            
-        let id = nameToSave[1].split('N°'),
-            arrayPoke = [],
-            pokemon = { name : nameToSave[0], id : id[1], img: $imagePoke.src }
-        if (localStorage.getItem('fav') !== null) {
-            let poke = JSON.parse(localStorage.getItem('fav'));
-            if (poke.filter(element => element.name === nameToSave[0] ).length > 0) {
-                poke = poke.filter(element => element.name !== nameToSave[0])
-                text.textContent = `Se elimino el pokemon ${pokemon.name}`
-                text.classList.add('remove-fav')
-                $conteiner.appendChild(text)
-                setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
-            } else {
-                poke.push(pokemon)
-                text.textContent = `Se agrego el pokemon ${pokemon.name}`
-                text.classList.add('add-fav')
-                $conteiner.appendChild(text)
-                setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
-            }
-            poke = JSON.stringify(poke)
-            localStorage.setItem('fav', poke )
-            
-        } else {
-            arrayPoke.push(pokemon)
-            arrayPoke = JSON.stringify(arrayPoke)
-            localStorage.setItem('fav', arrayPoke )
-            text.textContent = `Se agrego el pokemon ${pokemon.name}`
-            text.classList.add('add-fav')
-            $conteiner.appendChild(text)
-            setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
-        }   
+        let $text = document.getElementById('namePoke').textContent
+            $conteinerLength = 2
+        fav($text, $imagePoke, $conteinerLength) 
     }
 
     if (e.target.id === $shiny.id ) {
