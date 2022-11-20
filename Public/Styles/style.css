@@ -876,3 +876,19 @@ input::-webkit-inner-spin-button {
     0% {clip-path: polygon(10% 0, 20% 1%, 12% 100%, 0 100%);}
     100%{clip-path: polygon(140% 0, 150% 0, 120% 100%, 100% 100%);}
 }
+
+.fav {
+    border-radius: 50px;
+    position: fixed;
+    top: 15vh;
+    padding: 8px;
+}
+
+
+.add-fav {
+    background-color: #34a30d; 
+}
+
+.remove-fav {
+    background-color: #a30d0d; 
+}

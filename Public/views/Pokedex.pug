@@ -37,7 +37,9 @@ block content
             div.conteiner__pokes.flex#backPoke
                 each value in locals.allPokemons
                     div.conteiner__pokes__box-poke.flex
-                        p.box-poke__name-poke#namePoke= `${value.name} / N°${value.id}`
+                        div.box-poke__name-poke#namePoke.flex
+                            p= `${value.name} / N°${value.id}`
+                            img(src="/Public/Assets/hearth.png", alt="fav").nav__logo.fav_icon#iconFav
                         if(value.sprites.front_default !== null)
                             img( src=`${value.sprites.front_default}` alt=`${value.name}`).box-poke__img-poke#imgPoke
                         div.box-poke__input-poke.flex
