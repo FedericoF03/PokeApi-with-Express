@@ -333,6 +333,7 @@
 
 .fav_icon {
     max-height: 30px;
+    cursor: pointer;
 }
 
 .footer_logos { max-width: 25px; }
