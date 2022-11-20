@@ -174,7 +174,7 @@ else ChangeColor(colors.dark)
 
 document.addEventListener('click', (e) => {
     if(e.target.id === $favInput.id ) {
-        let $text = document.getElementById('namePoke').textContent
+        let $text = document.getElementById('namePoke').textContent,
             $conteinerLength = 2
         fav($text, $imagePoke, $conteinerLength) 
     }
