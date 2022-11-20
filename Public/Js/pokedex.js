@@ -65,13 +65,13 @@ document.addEventListener('click', e => {
                 text.textContent = `Se elimino el pokemon ${pokemon.name}`
                 text.classList.add('remove-fav')
                 $conteiner.appendChild(text)
-                setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
+                setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 1500)
             } else {
                 poke.push(pokemon)
                 text.textContent = `Se agrego el pokemon ${pokemon.name}`
                 text.classList.add('add-fav')
                 $conteiner.appendChild(text)
-                setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
+                setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 1500)
             }
             poke = JSON.stringify(poke)
             localStorage.setItem('fav', poke )
@@ -82,7 +82,7 @@ document.addEventListener('click', e => {
             text.textContent = `Se agrego el pokemon ${pokemon.name}`
             text.classList.add('add-fav')
             $conteiner.appendChild(text)
-            setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
+            setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 1500)
         } 
     }   
 })
