@@ -16,13 +16,13 @@ const fav = ($text, img, conteinerLength) => {
             let poke = JSON.parse(localStorage.getItem('fav'));
             if (poke.filter(element => element.name === nameToSave[0] ).length > 0) {
                 poke = poke.filter(element => element.name !== nameToSave[0])
-                text.textContent = `Se elimino el pokemon ${pokemon.name}`
+                text.textContent = `removed the pokemon ${pokemon.name} from favorites`
                 text.classList.add('remove-fav')
                 $conteiner.appendChild(text)
                 setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
             } else {
                 poke.push(pokemon)
-                text.textContent = `Se agrego el pokemon ${pokemon.name}`
+                text.textContent = `Added the ${pokemon.name} pokemon from favorites`
                 text.classList.add('add-fav')
                 $conteiner.appendChild(text)
                 setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
@@ -34,7 +34,7 @@ const fav = ($text, img, conteinerLength) => {
             arrayPoke.push(pokemon)
             arrayPoke = JSON.stringify(arrayPoke)
             localStorage.setItem('fav', arrayPoke )
-            text.textContent = `Se agrego el pokemon ${pokemon.name}`
+            text.textContent = `Added the ${pokemon.name} pokemon from favorites`
             text.classList.add('add-fav')
             $conteiner.appendChild(text)
             setTimeout(() =>  {$conteiner.removeChild($conteiner.lastChild)}, 2000)
