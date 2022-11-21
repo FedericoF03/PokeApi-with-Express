@@ -3,7 +3,7 @@ extends header.pug
 block content
     div.conteiner#conteiner
         p.form.flex= `The pokemon with the name '${locals.pokemon.name}' was added successfully`
-            a(href="/Pokedex").testing__go-Pokedex Go to Pokedex
-            a(href="/PokemonAdd").testing__go-Pokedex.testing__go-request add another
+            a(href="/Pokedex").go-link Go to Pokedex
+            a(href="/PokemonAdd").go-link.go-request add another
             
     include footer.pug

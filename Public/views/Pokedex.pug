@@ -11,10 +11,10 @@ block content
                     button.input__limits#inputLimit 100
             div.types__box.flex
                 div.select__type
-                    div.flex.type-button
-                        button.buttontest#selectType Types
-                        img(src="/Public/Assets/arrow-type.png", alt="arrow").test2arrow#imgArrow
-                    ul.ul.nones#menu
+                    div.flex.box-select
+                        button.select-button#selectType Types
+                        img(src="/Public/Assets/arrow-type.png", alt="arrow").select-arrow.border--right#imgArrow
+                    ul.ul.none#menu
                         li.option
                             a(href=`/Pokedex`) All
                         each types in allTypes
@@ -48,7 +48,7 @@ block content
                                     p.input-poke__link catch!
                                     img(src="/Public/Assets/pokeball.png" alt="Pokeball link").input-poke__link-img
             div.conteiner-pagination.flex
-                div.conteiner-pagination__add-db
+                div.conteiner__fav-db
                     a(href="/PokemonAdd" )
                         img(src="/Public/Assets/poke-add.png", alt="add").add-button
                     a(href="/Fav" )

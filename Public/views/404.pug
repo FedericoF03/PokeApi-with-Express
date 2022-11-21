@@ -2,14 +2,14 @@ extends header.pug
 
 block content
     div.conteiner#conteiner
-        div.form.flex.testing-wrap  
-            p.field-p Code Error:
-                span.field-span= `${locals.code}`
-            p.field-p Message error:
-                span.field-span= `${locals.message}`
-            p.field-p affected field:
-                span.field-span= `${locals.keyValue}`
-            a(href="/Pokedex").testing__go-Pokedex Go to Pokedex
-            a(href="/PokemonAdd").testing__go-Pokedex.testing__go-request Redo a request
+        div.form.flex.flex--wrap 
+            p.error-text Code Error:
+                span.error-text--span= `${locals.code}`
+            p.error-text Message error:
+                span.error-text--span= `${locals.message}`
+            p.error-text affected field:
+                span.error-text--span= `${locals.keyValue}`
+            a(href="/Pokedex").go-link Go to Pokedex
+            a(href="/PokemonAdd").go-link.go-request Redo a request
             script(type="module" src="/Public/Js/Listeners.js") 
     include footer.pug

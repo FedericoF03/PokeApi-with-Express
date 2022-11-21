@@ -20,7 +20,7 @@ const validation = validate => {
         if($conteiner.children.length > 3) $conteiner.removeChild($conteiner.lastChild);
         if (validate[key] === '') {
             $error.textContent = `Campo obligatorio: "${key.match("_") ? key.slice(1).replace("_", " ") : key}" vacio, por favor rellenar`;
-            $error.classList.add('errform')
+            $error.classList.add('form-error')
             return $conteiner.appendChild($error);
         }
     }

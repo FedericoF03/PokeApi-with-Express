@@ -7,8 +7,8 @@ block content
                 div.conteiner-pokemon.flex
                     p.box-poke__name-poke.box-poke__name-poke--margin#namePoke= `${locals.pokemonData.name} / N°${locals.pokemonData.id}`
                     div.conteiner-pokemon__box-pokemon.flex
-                        div.modal#modal.nones
-                            p.modal-text#info.nones= locals.pokemonData.description
+                        div.modal#modal.none
+                            p.modal-text#info.none= locals.pokemonData.description
                         button.fav-button.flex#info
                             img(src="/Public/Assets/!.png", alt="").fav-button__fav-logo#info
                         div         
@@ -26,14 +26,14 @@ block content
                             button.fav-button--radius#fav
                                 img(src="/Public/Assets/Heart.png", alt="").fav-button__fav-logo#fav 
                 if locals.pokemonData.legendary === true || locals.pokemonData.mythical === true
-                    div.size60.flex
+                    div.width--60.flex
                         if locals.pokemonData.legendary === true
-                            div.size50.center
-                                img(src="/Public/Assets/L.png").size50
+                            div.width--50.margin--auto
+                                img(src="/Public/Assets/L.png").width--50
                                 p L
                         if locals.pokemonData.mythical === true
-                            div.size50.center
-                                img(src="/Public/Assets/M.png").size50 
+                            div.width--50.margin--auto
+                                img(src="/Public/Assets/M.png").width--50 
                                 p M
                 p.pokemon-data  data
                 div.background-data#backDataDinamic 
@@ -50,12 +50,12 @@ block content
                     each value in locals.pokemonData.abilities 
                         if value.is_hidden 
                             div.flex
-                                p.ability_ocult Ability ocult
-                                p.ability-p= value.ability.name
+                                p.ability_ocult.content-ability Ability ocult
+                                p.data--content= value.ability.name
                         else 
                             div.flex
-                                p.ability Ability
-                                p.ability-p= value.ability.name
+                                p.ability.content-ability Ability
+                                p.data--content= value.ability.name
                 if locals.pokemonData.moves !== null
                     p.pokemon-data Moves
                     div.moves-data#backDataDinamic.flex 
@@ -68,24 +68,24 @@ block content
                 div.background-data#backDataDinamic 
                     if locals.pokemonData.habitat !== null
                         div.flex
-                            p.ability-p Habitat
+                            p.data--content Habitat
                             each value in locals.pokemonData.habitat
                                 if value !== null
-                                    p.ability-p= value
+                                    p.data--content= value
                                 else 
-                                    p.ability-p= '???'
+                                    p.data--content= '???'
                     div.flex
-                        p.ability-p Rate  
-                        p.ability-p=`${locals.pokemonData.rate}%`
+                        p.data--content Rate  
+                        p.data--content=`${locals.pokemonData.rate}%`
                     div.flex
-                        p.ability-pv2 Varierities 
+                        p.varirities Varierities 
                         div.conteiner-varierities.flex
                             if (locals.pokemonData.varierities > 0)
                                 each value in locals.pokemonData.varierities
                                     if locals.pokemonData.name !== value.pokemon.name
-                                        a(href=`${value.pokemon.name}`).ability-pv2.var= value.pokemon.name
+                                        a(href=`${value.pokemon.name}`).varirities.width--100= value.pokemon.name
                             else 
-                                p.ability-pv2.var= '???'
+                                p.varirities.width--100= '???'
             p.title Stat
             div.box-stat.flex#stats
                 each value in locals.pokemonData.stats
@@ -112,24 +112,23 @@ block content
                     else if value.stat.name === 'speed'
                         div.bar-background.bar-background--pink
                             div.bar-front.bar-front--pink
-                                p.stat-text= `${value.stat.name} ${value.base_stat}` 
-            if (locals.pokemonData["evolution_chain"] > 0)          
-                p.title Evolution chain
-                div.box-evolution.flex
-                    -let count = 1
-                    each value in locals.pokemonData["evolution_chain"]
-                        if value !== null
-                            div.box-evolution__pokemon
-                                p.box-poke__name-poke#namePoke= `${value.name} / N°${value.id}`
-                                img(src=`${typeof value.img === 'undefined' ? value.sprites.front_default : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/' + value.img + '.png'}`).box-poke__img-poke#imgPoke 
-                                if value.id < locals.pokemonData.id
-                                    a(href=`/pokemon/${value.name}`).box-evolution__evolution-link Involution!
-                                else if (value.id > locals.pokemonData.id)
-                                    a(href=`/pokemon/${value.name}`).box-evolution__evolution-link Evolved!
-                                else 
-                                    a(href=`/pokemon/${value.name}`).box-evolution__evolution-link Now!
-                                if (locals.pokemonData["evolution_chain"].length > count++)
-                                    img(src="/Public/Assets/arrow-evo.png", alt="arrow").arrow-evolution 
+                                p.stat-text= `${value.stat.name} ${value.base_stat}`      
+            p.title Evolution chain
+            div.box-evolution.flex
+                -let count = 1
+                each value in locals.pokemonData["evolution_chain"]
+                    if value !== null
+                        div.box-evolution__pokemon
+                            p.box-poke__name-poke#namePoke= `${value.name} / N°${value.id}`
+                            img(src=`${typeof value.img === 'undefined' ? value.sprites.front_default : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/' + value.img + '.png'}`).box-poke__img-poke#imgPoke 
+                            if value.id < locals.pokemonData.id
+                                a(href=`/pokemon/${value.name}`).box-evolution__evolution-link Involution!
+                            else if (value.id > locals.pokemonData.id)
+                                a(href=`/pokemon/${value.name}`).box-evolution__evolution-link Evolved!
+                            else 
+                                a(href=`/pokemon/${value.name}`).box-evolution__evolution-link Now!
+                            if (locals.pokemonData["evolution_chain"].length > count++)
+                                img(src="/Public/Assets/arrow-evo.png", alt="arrow").arrow-evolution 
             img( src="/Public/Assets/arrow.png" alt="arrow").arrow#arrow
     script(type="module" src="/Public/Js/pokemon.js") 
     include footer.pug

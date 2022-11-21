@@ -5,7 +5,7 @@ const fav = ($text, img, conteinerLength) => {
     let nameToSave = $text,
     text = document.createElement('p')
     nameToSave = nameToSave.split('/');
-    text.classList.add('fav')
+    text.classList.add('box-fav')
     
     let id = nameToSave[1].split('N°'),
         arrayPoke = [],

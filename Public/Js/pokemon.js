@@ -187,8 +187,8 @@ document.addEventListener('click', (e) => {
     }
    
     if(e.target.id === $modalDisplay.id || e.target.id === $modal.id ) {
-        $modalDisplay.classList.toggle('nones')
-        $modal.classList.toggle('nones')
+        $modalDisplay.classList.toggle('none')
+        $modal.classList.toggle('none')
         $modal.classList.toggle('flex')
     }
 })
