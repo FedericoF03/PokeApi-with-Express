@@ -4,25 +4,24 @@ block content
     div.conteiner#conteiner
         div.conteiner-pokedex__conteiner-filters.flex
         main.main.flex
-            div.conteiner__pokes.flex
-                div#backPoke
-                    template#template
-                        div.conteiner__pokes__box-poke.flex
-                            div.box-poke__name-poke.flex
-                                p#namePoke
-                                img(src="/Public/Assets/hearth.png", alt="fav").nav__logo.fav_icon#iconFav
-                            img( src=`` alt=``).box-poke__img-poke#imgPoke
-                            div.box-poke__input-poke.flex
-                                a(href=``).input-poke__link#linkPoke
-                                    div 
-                                        p.input-poke__link catch!
-                                        img(src="/Public/Assets/pokeball.png" alt="Pokeball link").input-poke__link-img
-                div.conteiner-pagination.flex
-                    div.conteiner__fav-db
-                        a(href="/PokemonAdd" )
-                            img(src="/Public/Assets/poke-add.png", alt="add").add-button
-                        a(href="/Fav" )#LinkFav
+            div#backPoke.conteiner__pokes.flex
+                template#template
+                    div.conteiner__pokes__box-poke.flex
+                        div.box-poke__name-poke.flex
+                            p#namePoke
                             img(src="/Public/Assets/hearth.png", alt="fav").nav__logo.fav_icon#iconFav
-                    img( src="/Public/Assets/arrow.png" alt="arrow").arrow.arrow-right#arrow
+                        img( src=`` alt=``).box-poke__img-poke#imgPoke
+                        div.box-poke__input-poke.flex
+                            a(href=``).input-poke__link#linkPoke
+                                div 
+                                    p.input-poke__link catch!
+                                    img(src="/Public/Assets/pokeball.png" alt="Pokeball link").input-poke__link-img
+            div.conteiner-pagination.flex
+                div.conteiner__fav-db
+                    a(href="/PokemonAdd" )
+                        img(src="/Public/Assets/poke-add.png", alt="add").add-button
+                    a(href="/Fav" )#LinkFav
+                        img(src="/Public/Assets/hearth.png", alt="fav").nav__logo.fav_icon#iconFav
+                img( src="/Public/Assets/arrow.png" alt="arrow").arrow.arrow-right#arrow
     include footer.pug
     script(type="module" src="/Public/Js/fav.js") 
