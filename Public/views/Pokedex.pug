@@ -14,13 +14,13 @@ block content
                     div.flex.box-select
                         button.select-button#selectType Types
                         img(src="/Public/Assets/arrow-type.png", alt="arrow").select-arrow.border--right#imgArrow
-                    ul.ul.none#menu
-                        li.option
-                            a(href=`/Pokedex`) All
-                        each types in allTypes
-                            if types.name !== 'unknown' && types.name !==  'shadow'
-                                li.option
-                                    a(href=`/types/${types.name}`)#typesH= types.name
+                        ul.ul.none#menu
+                            li.option
+                                a(href=`/Pokedex`) All
+                                each types in allTypes
+                                    if types.name !== 'unknown' && types.name !==  'shadow'
+                                        li.option
+                                            a(href=`/types/${types.name}`)#typesH= types.name
                 select.select__order#selectOrder
                     mixin order(name, subname) 
                             if(name === locals.order)

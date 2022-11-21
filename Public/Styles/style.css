@@ -792,9 +792,11 @@ ul > li > a {
     background-color: aliceblue;
     list-style: none;
     text-align: center;
-    border:#767676 solid 1px;
+    border: #767676 solid 1px;
     flex-direction: column;
     gap: 5px;
+    top: 100%;
+    width: 90%;
     height: 100px;
     overflow-y: auto;
     padding-inline-start: 0;
