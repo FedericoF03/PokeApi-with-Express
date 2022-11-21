@@ -6,7 +6,10 @@ const Router = express.Router();
 
 Router 
     .get('/PokemonAdd', async (req, res) => {
-        let locals = { types: await geType() }
+        let locals = { 
+            types: await geType(),
+            title: 'Poke-add'
+         }
         res.render('Add', locals)
     })
     .use(express.urlencoded({extended: true}))
@@ -39,7 +42,8 @@ Router
             locals = {
                 body,
                 pokemon,
-                detail
+                detail,
+                title: 'Poke-add'
             }
         return res.render('great', locals)
         }                   

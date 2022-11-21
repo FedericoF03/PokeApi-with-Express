@@ -20,7 +20,8 @@ Router
                 locals = {
                     pokemonData: {
                         ...pokemon._doc,
-                        ...detail._doc
+                        ...detail._doc,
+                        title: 'Pokemon'
                     } 
                 }
             for (const value of locals.pokemonData.id_chain) {
@@ -33,7 +34,10 @@ Router
         }
         let chain = await PokeApiController.getEvolutionChainController(pokemonData.evolution_chain);
         pokemonData.evolution_chain = chain;
-        let locals = { pokemonData }
+        let locals = { 
+            pokemonData,
+            title: 'Pokemon'
+         }
         res.render('Pokemon', locals)
     })
 
