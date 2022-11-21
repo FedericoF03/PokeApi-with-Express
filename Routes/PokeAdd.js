@@ -22,7 +22,6 @@ Router
             body = req.body,
             pokemon = null,
             detail = null;
-
         try {
             pokemon = await PokemonController.saveOneController({body, count})
             detail = await DetailController.saveOneController({body, count})
