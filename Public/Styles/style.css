@@ -89,9 +89,7 @@
     color: white;
 }
 
-.search__input-search::placeholder {
-    color: rgb(0, 0, 0);
-}
+.search__input-search::placeholder { color: rgb(0, 0, 0); }
 
 .search__input-search:focus-visible { outline: none; }
 
