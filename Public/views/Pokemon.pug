@@ -26,7 +26,7 @@ block content
                             button.fav-button--radius#fav
                                 img(src="/Public/Assets/Heart.png", alt="").fav-button__fav-logo#fav 
                 if locals.pokemonData.legendary === true || locals.pokemonData.mythical === true
-                    div.width--60.flex
+                    div.width--60.flex.align-text--center 
                         if locals.pokemonData.legendary === true
                             div.width--50.margin--auto
                                 img(src="/Public/Assets/L.png").width--50
