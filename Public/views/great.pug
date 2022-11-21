@@ -2,7 +2,7 @@ extends header.pug
 
 block content
     div.conteiner#conteiner
-        p.form.flex= `The pokemon with the name '${pokemon.name}' was added successfully`
+        p.form.flex= `The pokemon with the name '${body.name}' was added successfully`
             a(href="/Pokedex").go-link Go to Pokedex
             a(href="/PokemonAdd").go-link.go-request add another
             
