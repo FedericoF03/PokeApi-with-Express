@@ -85,6 +85,12 @@
     max-width: 80%;
     border: none; 
     padding: 2px 3px;
+    background-color: #09adff;
+    color: white;
+}
+
+.search__input-search::placeholder {
+    color: rgb(0, 0, 0);
 }
 
 .search__input-search:focus-visible { outline: none; }
@@ -535,7 +541,7 @@
     max-width: 50px;
     position: fixed;
     bottom: 15vh;
-    right: 5px;
+    right: 8px;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     transition: 0.1s clip-path;
     cursor: pointer;
@@ -574,7 +580,7 @@
 .conteiner-selects { width: 150px; }
 
 .box-select {
-    width: 50%;
+    width: 49%;
     max-width: 200px;
     position: relative;
     cursor: pointer;
@@ -584,6 +590,7 @@
     width: 20px;
     background-color: #FFFFFF;
     border: none;
+    margin-right: 5px;
 }
 
 .back-arrow--grey { background-color: #DEDEDE }
@@ -763,6 +770,23 @@ input::-webkit-inner-spin-button {
     padding: 8px;
 }
 
+.conteiner::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+.conteiner::-webkit-scrollbar-track {
+    background: #000000a0;
+}
+
+.conteiner::-webkit-scrollbar-thumb {
+    min-height: 100px;
+    background-color: #0ea2f1;
+    border-radius: 50px;
+}
+
+.conteiner::-webkit-scrollbar-thumb:hover {
+    background-color: #0e69f1;
+}
 
 .add-fav { background-color: #34a30d; }
 
@@ -795,10 +819,20 @@ ul > li > a {
     flex-direction: column;
     gap: 5px;
     top: 100%;
-    width: 90%;
+    width: 100%;
     height: 100px;
     overflow-y: auto;
     padding-inline-start: 0;
+}
+
+ul::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: #b3b3b382;
+}
+
+ul::-webkit-scrollbar-thumb {
+    width: 0.5rem;
+    background-color: #b3b3b3fe;
 }
 
 .ul > li:hover { background-color: #26A0DA;}
@@ -817,6 +851,10 @@ ul > li > a {
 
 .flex--wrap { flex-wrap: wrap; }
 
+.width--120 { width: 120%; }
+
+.margin-left--5 { margin-left: 5px;}
+
 @media screen and (min-width: 768px) {
 
     .conteiner-logotype { max-width: 500px; }
@@ -829,5 +867,7 @@ ul > li > a {
     }
 
     .conteiner__pokes__box-poke { width: 33%; }
+
+    .conteiner::-webkit-scrollbar { width: 1rem; }
 
 }

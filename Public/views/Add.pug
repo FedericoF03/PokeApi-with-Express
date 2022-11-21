@@ -22,13 +22,13 @@ block content
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Attack*")#specialAttack.form-text
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon special Def*")#specialDefense.form-text
                     input(type="number" name="stats" min="1" max="255" placeholder="Pokemon speed*")#speed.form-text
-                div(hidden).align-text--center
-                    div.gap--5.conteiner-selects.flex
+                div(hidden).width--100.align-text--center
+                    div.width--100.gap--5.conteiner-selects.flex
                         div.flex.box-select#select
-                            button.select-button Types*
+                            button.select-button.margin-left--5 Types*
                             input(type="hidden" name="types")#type
                             img(src="/Public/Assets/arrow-type.png", alt="arrow").select-arrow
-                            ul.ul.ul--types.none#list
+                            ul.width--100.ul.ul--types.none#list
                                 each types in locals.types.results
                                     if (types.name !== 'unknown' && types.name !== 'shadow')
                                         li.option= types.name
@@ -36,7 +36,7 @@ block content
                             button.select-button Types
                             input(type="hidden" name="types")
                             img(src="/Public/Assets/arrow-type.png", alt="arrow").select-arrow
-                            ul.ul.ul--types.none#list
+                            ul.ul.ul--types.none.width--100#list
                                 each types in locals.types.results
                                     if types.name !== 'unknown' && types.name !== 'shadow'
                                         li.option= types.name
