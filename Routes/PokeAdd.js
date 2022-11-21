@@ -34,7 +34,9 @@ Router
             }
             if(error.code === 11000) return res.render('404', locals)    
         } finally {
-            let locals = {
+            let locals = { body }
+            if (pokemon === null) return res.render('error', locals)  
+            locals = {
                 body,
                 pokemon,
                 detail

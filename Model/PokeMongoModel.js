@@ -54,7 +54,7 @@ export class PokemonModel{
             id: parseInt(count) + 1,
             id_chain: []
         });
-
+        // console.log(pokemon)
         form.types = form.types.filter(type => type.trim() !== '');
         pokemon.types = form.types.map( element => { return { _type: { name: element } } } );
        
@@ -80,17 +80,17 @@ export class PokemonModel{
                 .filter( move => move.trim() !== '')
                 .map( element => obj = { move: { name: element } });
         } else pokemon.moves.push({ move: { name: form.moves } });
-        
+
         if(Array.isArray(form.evoChainName)) {
             let obj;
             pokemon.id_chain = form.evoChainName
                 .filter( name => name.trim() !== '')
                 .map( element => obj = { name: element });
+            
         } else {
-            if (name.trim() !== '') pokemon.id_chain.push({ name: form.evoChainName });  
-            else pokemon.id_chain.push(null);
+            if (form.evoChainName.trim() !== '') pokemon.id_chain.push({ name: form.evoChainName });  
+            else pokemon.id_chain.push({ name: null });
         }
-
         const result = await pokemon.save();
         return result
     }

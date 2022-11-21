@@ -19,7 +19,7 @@ const validation = validate => {
     for(let key in validate) {     
         if($conteiner.children.length > 3) $conteiner.removeChild($conteiner.lastChild);
         if (validate[key] === '') {
-            $error.textContent = `Campo obligatorio: "${key.match("_") ? key.slice(1).replace("_", " ") : key}" vacio, por favor rellenar`;
+            $error.textContent = `Campo obligatorio: "${key.match("_") ? key.replace("_", " ") : key}" vacio, por favor rellenar`;
             $error.classList.add('form-error')
             return $conteiner.appendChild($error);
         }
@@ -57,7 +57,7 @@ const addInput = objInput => {
     input.setAttribute('name', objInput.name);
 
     if(objInput.type === 'text') {
-        input.classList.add('text-form')
+        input.classList.add('form-text')
         input.setAttribute('placeholder', objInput.placeholder);
     }
     
@@ -78,11 +78,12 @@ $form.addEventListener("submit", e => {
         special_Attack: document.getElementById('specialAttack').value,
         special_Defense: document.getElementById('specialDefense').value,
         speed: document.getElementById('speed').value,
-        moves: document.getElementById('moves').value,
-        habitat: document.getElementById('habitat').value,
-        rate: document.getElementById('rate').value,
         type: document.getElementById('type').value,
-        descrp: document.getElementById('descrp').value
+        abilities: document.getElementById('abilitiesForm').value,
+        moves: document.getElementById('movesForm').value,
+        rate: document.getElementById('rate').value,
+        descrp: document.getElementById('descrp').value,
+        habitat: document.getElementById('habitat').value
     };
     if(validation(validates) === true) $form.submit();       
 })
