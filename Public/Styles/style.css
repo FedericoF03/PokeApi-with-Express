@@ -849,7 +849,7 @@ ul::-webkit-scrollbar-thumb {
 
 .flex--wrap { flex-wrap: wrap; }
 
-.width--120 { width: 120%; }
+.width-special { width: 120%; }
 
 .margin-left--5 { margin-left: 5px;}
 
@@ -867,5 +867,7 @@ ul::-webkit-scrollbar-thumb {
     .conteiner__pokes__box-poke { width: 33%; }
 
     .conteiner::-webkit-scrollbar { width: 1rem; }
+
+    .width-special { width: 100%; }
 
 }
