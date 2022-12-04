@@ -196,7 +196,7 @@
 .conteiner__pokes {
     flex-direction: column;
     gap: 25px;
-    margin: 15px 0
+    margin: 15px auto;
 }
 
 .conteiner__pokes__box-poke {
@@ -786,6 +786,14 @@ input::-webkit-inner-spin-button {
     background-color: #0e69f1;
 }
 
+.null {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .add-fav { background-color: #34a30d; }
 
 .remove-fav { background-color: #a30d0d; }
@@ -864,7 +872,6 @@ ul::-webkit-scrollbar-thumb {
     .conteiner__pokes {
         flex-direction: row;
         gap: 25px;
-        margin: 15px 0;
         flex-wrap: wrap;
     }
 

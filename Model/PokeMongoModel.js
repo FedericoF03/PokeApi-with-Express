@@ -1,136 +1,112 @@
-import { Pokemon, DetailPokemon } from './Schemas.js'
+import { Pokemon, DetailPokemon } from "./Schemas.js";
 
-export class PokemonModel{
+export class PokemonModel {
+  getAllMongo = async (offset, limit) => {
+    let result = await Pokemon.find({}),
+        count = result.length - 1;
 
-    getAllMongo = async (offset, limit) => {
-        let result = await Pokemon.find({});
-        if (result.length <= 0) return result = null;
-        let count = result.length - 1;
-        limit = parseInt(offset) + parseInt(limit);
-        result = result.slice(offset, limit);
-        return {
-            result,
-            count
-        }
-    }
+    if (result.length <= 0) return (result = null);
 
-    getCountMongo = async () => {
-        let result = await Pokemon.count({})
-        return result
-    }
-    getTypeMongo = async (type, offset, limit) => {
-        let result = await Pokemon.find( { types: { $elemMatch: { _type: { name: type } } } } );
-        if (result.length <= 0) return result = null;
-        let count = result.length - 1;
-        limit = parseInt(offset) + parseInt(limit);
-        result = result.slice(offset, limit);
-        return {
-            result,
-            count
-        }
-    }
+    limit = parseInt(offset) + parseInt(limit);
+    result = result.slice(offset, limit);
+    return {
+      result,
+      count,
+    };
+  };
 
-    saveMongo = async (form, count) => {
-       const pokemon = new Pokemon({
-            name: form.pokemoName,
-            height: form.height,
-            weight: form.weight,
-            sprites: {
-                front_default: form.sprites[0].trim(),
-                front_shiny: form.sprites[1].trim(),
-                back_default: form.sprites[2].trim() !== ''? form.sprites[2] : null,
-                back_shiny: form.sprites[3].trim() !== ''? form.sprites[3] : null
-            },
-            types: [],
-            stats: [ {base_stat: form.stats[0], stat: { name: 'hp'}},
-                { base_stat: form.stats[1], stat: { name: 'attack'}},
-                { base_stat: form.stats[2], stat: { name: 'defense'}},
-                { base_stat: form.stats[3], stat: { name: 'special-attack'}},
-                { base_stat: form.stats[4], stat: { name: 'special-defense'}},
-                { base_stat: form.stats[5], stat: { name: 'speed'}},
-            ],
-            abilities: [],
-            moves: [],
-            id: parseInt(count) + 1,
-            id_chain: []
-        });
-        // console.log(pokemon)
-        form.types = form.types.filter(type => type.trim() !== '');
-        pokemon.types = form.types.map( element => { return { _type: { name: element } } } );
-       
-        if(Array.isArray(form.abilities)) {
-            let obj;
-            pokemon.abilities = form.abilities
-                .filter( ability => ability.trim() !== '')
-                .map( (element, index) => obj = { 
-                    ability: { name: element }, 
-                    is_hidden: form.ability[index] === 'Ability Ocult' 
-                    ? true
-                    : false 
-                });     
-        } else pokemon.abilities.push( { 
-            ability: { name: form.abilities }, 
-            is_hidden: form.ability === 'Ability Ocult' 
-            ? true 
-            : false });
+  getCountMongo = async () => {
+    let result = await Pokemon.count({});
+    return result;
+  };
 
-        if(Array.isArray(form.moves)) {
-            let obj;
-            pokemon.moves = form.moves
-                .filter( move => move.trim() !== '')
-                .map( element => obj = { move: { name: element } });
-        } else pokemon.moves.push({ move: { name: form.moves } });
+  getTypeMongo = async (type, offset, limit) => {
+    let result = await Pokemon.find({
+      types: { $elemMatch: { _type: { name: type } } },
+    }),
+      count = result.length - 1;
+    if (result.length <= 0) return (result = null);
+    limit = parseInt(offset) + parseInt(limit);
+    result = result.slice(offset, limit);
+    return {
+      result,
+      count,
+    };
+  };
 
-        if(Array.isArray(form.evoChainName)) {
-            let obj;
-            pokemon.id_chain = form.evoChainName
-                .filter( name => name.trim() !== '')
-                .map( element => obj = { name: element });
-            
-        } else {
-            if (form.evoChainName.trim() !== '') pokemon.id_chain.push({ name: form.evoChainName });  
-            else pokemon.id_chain.push({ name: null });
-        }
-        const result = await pokemon.save();
-        return result
-    }
+  saveMongo = async ({
+      height,
+      weight,
+      sprites,
+      types,
+      stats,
+      ability,
+      abilities,
+      moves,
+      pokemoName,
+      evoChainName,
+    }, count ) => {
+    const pokemon = await new Pokemon({
+      name: pokemoName,
+      height: height,
+      weight: weight,
+      sprites: {
+        front_default: sprites[0].trim(),
+        front_shiny: sprites[1].trim()
+      },
+      types: types.map( element => ({ _type: { name: element } })),
+      stats: [
+        { base_stat: stats[0], stat: { name: "hp" } },
+        { base_stat: stats[1], stat: { name: "attack" } },
+        { base_stat: stats[2], stat: { name: "defense" } },
+        { base_stat: stats[3], stat: { name: "special-attack" } },
+        { base_stat: stats[4], stat: { name: "special-defense" } },
+        { base_stat: stats[5], stat: { name: "speed" } },
+      ],
+      abilities: abilities.map( (element, index) => ({ 
+          ability: { name: element },
+          is_hidden: ability[index] === "Ability Ocult" ? true : false
+          }) 
+        ),
+      moves: moves = moves.map((element) => ({ move: { name: element } })),
+      id: parseInt(count) + 1,
+      id_chain: evoChainName.map((element) => ({ name: element })),
+    });
+    return await pokemon.save();
+  };
 
-    findOneMongo = async (nameOrId) => {
-        const result = await Pokemon.findOne( {$or: [{name: nameOrId}, {id: nameOrId}]} );
-        return result
-    }
+  findOneMongo = async (nameOrId) => {
+    const result = await Pokemon.findOne({
+      $or: [{ name: nameOrId }, { id: nameOrId }],
+    });
+    return result;
+  };
 }
 
 export class DetailModel {
-    
-    saveMongo = async (form, count) => {
-       const detailPokemon = new DetailPokemon({
-            id: parseInt(count) + 1,
-            name: form.pokemoName,
-            rate: form.rate,
-            description: form.description,
-            varierities: [],
-            habitat: { name: form.habitat.trim() !== '' ? form.habitat : null  },
-            legendary: form.legendary === 'on' ? true : false,
-            mythical: form.mythical === 'on' ? true : false
-        });
+  saveMongo = async ({pokemoName, rate, description, varierities, habitat, legendary, mythical}, count) => {
+    const detailPokemon = await new DetailPokemon({
+      id: parseInt(count) + 1,
+      name: pokemoName,
+      rate: rate,
+      description: description,
+      varierities: varierities.map( element => ({
+              is_default: element === pokemoName ? true : false,
+              pokemon: { name: element },
+            })
+        ),
+      habitat: { name: habitat.trim() !== "" ? habitat : null },
+      legendary: legendary === "on" ? true : false,
+      mythical: mythical === "on" ? true : false,
+    });
+    return await detailPokemon.save();
+   
+  };
 
-        if(Array.isArray(form.varierities)) {
-            let obj;
-            detailPokemon.varierities = form.varierities
-                .filter( varierity => varierity.trim() !== '')
-                .map( element => obj = { 
-                    is_default: element === form.pokemoName? true : false, 
-                    pokemon: { name: element } });
-        } else detailPokemon.varierities.push({ 
-            is_default: form.varierities === form.pokemoName? true : false, 
-            pokemon: { name: form.varierities } });
-        const result = await detailPokemon.save();
-        return result
-    }
-
-    findOneMongo = async (nameOrId) => {
-        const result = await DetailPokemon.findOne( {$or: [{name: nameOrId}, {id: nameOrId}]} );
-        return result
-    }
+  findOneMongo = async (nameOrId) => {
+    const result = await DetailPokemon.findOne({
+      $or: [{ name: nameOrId }, { id: nameOrId }],
+    });
+    return result;
+  };
 }

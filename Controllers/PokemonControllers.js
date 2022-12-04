@@ -14,9 +14,10 @@ export class PokemonController {
         return result
     }
 
-    static saveOneController = async (formData) => {
+    static saveOneController = async ({body, count}) => {
         const pokemon = new PokemonModel,
-        result = await pokemon.saveMongo(formData.body, formData.count);
+        result = await pokemon.saveMongo(body, count);
+        console.log(result)
         return result
     }
 
@@ -34,9 +35,9 @@ export class PokemonController {
 }
 
 export class DetailController {
-    static saveOneController = async (formData) => {
+    static saveOneController = async ({body, count }) => {
         const detail = new DetailModel,
-        result = await detail.saveMongo(formData.body, formData.count);
+        result = await detail.saveMongo(body, count);
         return result
     }
 

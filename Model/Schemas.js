@@ -11,8 +11,6 @@ export const PokeSchema = new Schema({
     sprites: {
         front_default: {type: String, default: null}, 
         back_default: {type: String, default: null},
-        front_shiny: {type: String, default: null},
-        back_shiny: {type: String, default: null},
     },
     stats: [ { base_stat: Number, stat: { name: String}}],
     types: [ { _type: { name: String }}],
